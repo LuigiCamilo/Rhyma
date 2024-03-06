@@ -1,0 +1,14 @@
+class CreateCourses < ActiveRecord::Migration[7.1]
+  def change
+    create_table :courses do |t|
+      t.string :title
+      t.string :subtitle
+      t.string :short_description
+      t.text :description
+      t.references :user, null: false, foreign_key: true
+      t.references :theme, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
