@@ -14,6 +14,7 @@ class AdvancesController < ApplicationController
   end
 
   private
+
   def set_course
     @advance = Advance.find(params[:id])
     @lecture = params[:lecture]
