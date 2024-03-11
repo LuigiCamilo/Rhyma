@@ -23,68 +23,87 @@
     </div>
   </div>
 </header>
-<div class="container">
-  <h2 class="text-center">Title</h2>
-  <p class="text-center">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam asperiores dolores dicta architecto adipisci saepe neque
-    voluptatibus molestias vel nihil fuga non rem, aperiam enim doloremque dignissimos cupiditate error consectetur.
-  </p>
-  <div class="d-flex gap-4 justify-content-center">
-    <div class="card" style="width: 18rem;">
-      <img src="https://images.pexels.com/photos/6647870/pexels-photo-6647870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="https://images.pexels.com/photos/6647870/pexels-photo-6647870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="https://images.pexels.com/photos/6647870/pexels-photo-6647870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
 
-<section>
-  <div class="activites">
-    <div class="d-flex">
-      <p>Todas las marcas populares para</p>
-      <h3>
-        link
-      </h3>
-    </div>
-    <div>
-      <p>La mejor comida para tus</p>
-      <h3>
-        link
-      </h3>
-    </div>
-    <div>
-      <p>Haz feliz a tus</p>
-      <h3>
-        link
-      </h3>
-    </div>
-    <div>
-    <h2>link</h2>
-    </div>
-    <div id="birds">
-    <h3>link</h3></div>
+<%# cards %>
+<section class="container pb-4">
+  <div class="container">
+    <h2 class="">Nuestros contenido</h2>
+    <div class="d-flex gap-4 justify-content-center">
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2>Product name</h2>
+          <p>Product description with <strong>relevant info</strong> only.</p>
+        </div>
+      </div>
+       <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2>Product name</h2>
+          <p>Product description with <strong>relevant info</strong> only.</p>
+        </div>
+      </div>
+       <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2>Product name</h2>
+          <p>Product description with <strong>relevant info</strong> only.</p>
+        </div>
+      </div>
 
+
+    </div>
   </div>
 </section>
+
+<section class="container py-5">
+  <div class="container px-5 row">
+    <div class="col-md-7">
+      <h4>Como Empezar</h4>
+      <h2>proceso simple para comenzar</h2>
+      <div class="register d-flex align-items-center pt-4 gap-3">
+        <div class="proccess col-md-4">
+          <i class="fa-solid fa-file-lines"></i>
+        </div>
+        <div class="px-2">
+          <h3>Register</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id quisquam fugit maiores inventore sint placeat ipsam
+            molestiae nulla ea culpa distinctio.
+          </p>
+        </div>
+      </div>
+      <div class="lesson d-flex align-items-center gap-3">
+        <div class="proccess col-md-4">
+         <i class="fa-solid fa-person-chalkboard"></i>
+        </div>
+        <div class="px-2">
+          <h3>Elegir lección</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id quisquam fugit maiores inventore sint placeat ipsam
+            molestiae nulla ea culpa distinctio.
+          </p>
+        </div>
+      </div>
+      <div class="start d-flex align-items-center gap-3">
+        <div class="proccess col-md-4">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="px-2">
+          <h3>Comienza a aprender</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id quisquam fugit maiores inventore sint placeat ipsam
+            molestiae nulla ea culpa distinctio.
+          </p>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-5 d-flex align-items-end">
+    <div class="img_two" style="background-image: url(<%= asset_path 'pexels-cottonbro-studio-4709832.jpg' %>)"></div>
+    <div class="img_one" style="background-image: url(<%= asset_path 'pexels-george-milton-6953867.jpg' %>)"></div>
+  </div>
+</section>
+
 <section class="bg-light py-5">
   <div class="container px-5">
     <div class="row gx-5 justify-content-center">
