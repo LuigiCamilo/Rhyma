@@ -4,3 +4,14 @@
 
 <p><%= @lecture.content %></p>
 <p><%= @lecture.published %></p>
+
+
+<%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
+<%= @lecture.lecture %>
+<%= @lecture.course_id %>
+
+<% if @lecture.lecture != 1 %>
+  <button type="button" class="btn btn-primary">anterior</button>
+<% end  %>
+
+<%= link_to "Siguiente", next_lecture_path, class: "btn btn-primary" %>

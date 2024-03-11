@@ -43,7 +43,7 @@ class LecturesController < ApplicationController
   private
 
   def set_lecture
-    @lecture = Lecture.find(params[:course_id])
+    @lecture = Lecture.find(params[:id])
   end
 
   def lecture_params
