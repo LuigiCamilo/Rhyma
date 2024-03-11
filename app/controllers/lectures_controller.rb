@@ -1,6 +1,10 @@
 class LecturesController < ApplicationController
   before_action :set_lecture, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @lectures = Lecture.where('course_id = ?', params[:course_id])
+  end
+
   def new
     @lecture = Lecture.new
   end
@@ -43,7 +47,7 @@ class LecturesController < ApplicationController
   private
 
   def set_lecture
-    @lecture = Lecture.find(params[:course_id])
+    @lecture = Lecture.find(params[:id])
   end
 
   def lecture_params
