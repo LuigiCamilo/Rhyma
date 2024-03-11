@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_07_173219) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_08_210501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,8 +64,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_07_173219) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
-    t.string "subtitle"
-    t.string "short_description"
     t.text "description"
     t.bigint "user_id", null: false
     t.bigint "theme_id", null: false
@@ -68,7 +76,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_07_173219) do
 
   create_table "lectures", force: :cascade do |t|
     t.string "title"
-    t.string "subtitle"
     t.text "content"
     t.integer "lecture"
     t.bigint "course_id", null: false

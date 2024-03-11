@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :courses do
+    resources :lectures
+  end
   devise_for :users
   root to: "pages#home"
   # root to: "pages#index"

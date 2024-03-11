@@ -1,0 +1,22 @@
+<h1>Courses#new</h1>
+<p>Find me in app/views/courses/new.html.erb</p>
+<section class="get-in-touch section_form" style="max-width: 1000px;">
+   <h1 class="title"><i class="fas fa-shopping-bag"> Nuevo Curso</i></h1>
+   <%= simple_form_for @course, html: { class: "contact-form row" } do |f| %>
+      <div class="form-field col-lg-4">
+         <%= f.input :title, label: "Nombre del curso", input_html: { class: "input-text js-input", required: true } %>
+      </div>
+      <div class="form-field col-lg-4">
+        <%= f.input :theme_id, collection: Theme.all.map { |theme| [theme.title, theme.id] }, prompt: 'Select Theme' %>
+      </div>
+      <div class="form-field col-lg-12">
+          <%= f.input :photo, label: "Foto", as: :file, input_html: { id:"photo-product", class: "input-text js-input", required: true } %>
+      </div>
+      <div class="form-field field col-lg-12">
+         <%= f.input :description, as: :rich_text_area, label: "Descripción", input_html: { class: "input-text js-input", required: true } %>
+      </div>
+      <div class="form-field col-lg-12 d-flex">
+         <%= f.button :submit, "Crear", class: "submit-btn btn btn-primary", id: "create_product" %>
+      </div>
+   <% end %>
+</section>

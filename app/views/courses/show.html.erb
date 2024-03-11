@@ -1,0 +1,9 @@
+<h1>Courses#show</h1>
+<p>Find me in app/views/courses/show.html.erb</p>
+
+<h2><%= @course.title %><h2>
+
+<%= @course.description %>
+<p><%= @course.published %></p>
+<p></p>
+ <%= link_to "Comenzar", course_lecture_path(@first_lecture), class:"btn btn-details btn-warning shadow-0" %>
