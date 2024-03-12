@@ -1,3 +1,42 @@
+<div class="container">
+<div class="register-photo">
+    <div class="form-container">
+        <div class="image-holder" style="background-image: url(<%= asset_path 'login_violin.jpg' %>); "></div>
+       <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.full_error :unlock_token %>
+            <h2 class="text-center"><strong>Resend unlock instructions</strong></h2>
+            <div class="form-group">
+                <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+            </div>
+            <div class="form-group">
+                <%= f.input :password,
+                            required: false,
+                            label: false,
+                            input_html: { class: "form-control", placeholder: "Contraseña", autocomplete: "current-password" } %>
+            </div>
+            <div class="form-group">
+                <div class="d-flex justify-content-between">
+                    <%= render "devise/shared/links" %>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+               <%= f.button :submit, "Resend unlock instructions", class: "btn btn-success btn-block btn-info" %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+
+
+
+
+
+
 <h2>Resend unlock instructions</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
