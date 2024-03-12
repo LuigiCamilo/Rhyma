@@ -2,5 +2,12 @@
 <p>Find me in app/views/lectures/show.html.erb</p>
 <h2><%= @lecture.title %><h2>
 
-<p><%= @lecture.content %></p>
-<p><%= @lecture.published %></p>
+<%= @lecture.content %>
+
+<% @lecture.content.embeds.each do |adj| %>
+      <% image= ActiveStorage::Blob.find_by(id: adj.blob_id) %>
+      <%= cl_image_tag image.key %>
+
+<% end %>
+
+<p><% @lecture.published %></p>
