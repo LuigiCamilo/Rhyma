@@ -121,6 +121,7 @@ courses.each do |course|
   )
   course_new.photo.attach(image_blob)
   course_new.save
+
 end
 
 lectures = [
@@ -273,6 +274,8 @@ require "open-uri"
 
 # Crear lectures
 counter = 1
+prev_course_id = 0
+
 lectures.each do |lecture|
   lecture_new = Lecture.create!(
     title: lecture[:title],
@@ -300,5 +303,17 @@ lectures.each do |lecture|
   lecture_new.photos.attach(image_blob)
   lecture_new.video.attach(video_blob)
   lecture_new.save
-  counter += 1
+  course_id = lecture_new[:course_id]
+  if course_id == prev_course_id
+    counter += 1
+    puts "prev_course_id = #{prev_course_id}"
+    puts "course_id = #{course_id}"
+
+  else
+    counter = 2
+    puts "prev_course_id = #{prev_course_id}"
+    puts "course_id = #{course_id}"
+    puts "no son iguales"
+  end
+  prev_course_id = course_id
 end
