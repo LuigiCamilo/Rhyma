@@ -7,16 +7,15 @@ class AdvancesController < ApplicationController
     @advance = Advance.find_by(user_id: current_user.id, course_id: session[:course_id])
     if @advance.nil?
       create
-    else
-      update if @advance.lecture < session[:lecture]
-        # raise
+    elsif @advance.lecture < session[:lecture]
+      update
     end
-
-    next_lecture = Lecture.find_by(course_id: session[:course_id], lecture:(session[:lecture]+1) )
-
-
-
-    redirect_to course_lecture_path(session[:course_id], next_lecture), status: :found
+    next_lecture = Lecture.find_by(course_id: session[:course_id], lecture: (session[:lecture] + 1))
+    if next_lecture.nil?
+      redirect_to course_path(session[:course_id]), status: :found
+    else
+      redirect_to course_lecture_path(session[:course_id], next_lecture), status: :found
+    end
   end
 
   def create
