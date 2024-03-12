@@ -10,15 +10,13 @@ class AdvancesController < ApplicationController
     else
       update if @advance.lecture < session[:lecture]
         # raise
-
-      end
     end
 
     redirect_to edit_course_lecture(@lecture), status: :found
   end
 
   def create
-    @advance = Advance.new(lecture: session[:lecture], user_id: current_user.id, course_id: session[:course_id])
+    @advance = Advance.new(lecture: 0, user_id: current_user.id, course_id: session[:course_id])
     @advance.save
 
     # redirect_to edit_course_lecture(@lecture), status: :no found
@@ -26,9 +24,9 @@ class AdvancesController < ApplicationController
 
   def update
     @advance.lecture = session[:lecture]
-    unless @advance.update(lecture: session[:lecture], user_id: current_user.id, course_id: session[:course_id])
+    @advance.update(lecture: session[:lecture])
       # redirect_to edit_course_lecture(@lecture), status: :found
-    end
+
   end
 
   private

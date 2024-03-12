@@ -13,10 +13,11 @@ class CoursesController < ApplicationController
   def show
     @reviews = @course.reviews
     @lectures = @course.lectures
-    @first_lecture = Lecture.find_by(lecture: 1, course: @course)
+    @first_lecture = Lecture.find_by(lecture: 1, course_id: @course)
     @advance = nil
     @advance = Advance.find_by(user: current_user, course: @course) if user_signed_in?
     @advance = Advance.new if @advance.nil?
+    # raise
   end
 
   def create
