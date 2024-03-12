@@ -1,5 +1,5 @@
 class Lecture < ApplicationRecord
   belongs_to :course
   has_many_attached :photos
-  has_many_attached :videos
+  has_one_attached :video
 end
