@@ -31,7 +31,7 @@
               <%suggestion1 = Course.all.sample%>
                <%= link_to course_path(suggestion1) do %>
               <%= cl_image_tag suggestion1.photo.key, class: "img-fluid w-100 h-100" %>
-              <%=suggestion1.title%>
+              <%=suggestion1.title[0..30] + "..."%>
             <% end %>
              <!-- <img src="https://via.placeholder.com/150" alt="Video 1" class="img-fluid">-->
             </div>
@@ -40,8 +40,8 @@
             <div class="video-thumbnail mb-3">
             <%suggestion2 = Course.all.sample%>
              <%= link_to course_path(suggestion2) do %>
-              <%= cl_image_tag suggestion2.photo.key, class: "img-fluid w-100" %>
-              <%=suggestion2.title%>
+              <%= cl_image_tag suggestion2.photo.key, class: "img-fluid w-100 h-100" %>
+              <%=suggestion2.title[0..30] + "..."%>
             <% end %>
 
             </div>
@@ -50,8 +50,8 @@
             <div class="video-thumbnail mb-3">
               <%suggestion3 = Course.all.sample%>
               <%= link_to course_path(suggestion3) do %>
-              <%= cl_image_tag suggestion3.photo.key, class: "img-fluid w-100" %>
-              <%=suggestion3.title%>
+              <%= cl_image_tag suggestion3.photo.key, class: "img-fluid w-100 h-100" %>
+              <%=suggestion3.title[0..30] + "..."%>
             <% end %>
             </div>
           </div>
@@ -59,8 +59,8 @@
             <div class="video-thumbnail mb-3">
               <%suggestion4 = Course.all.sample%>
               <%= link_to course_path(suggestion4) do %>
-              <%= cl_image_tag suggestion4.photo.key, class: "img-fluid w-100" %>
-              <%=suggestion4.title%>
+              <%= cl_image_tag suggestion4.photo.key, class: "img-fluid w-100 h-100" %>
+              <%=suggestion4.title[0..30] + "..."%>
             <% end %>
             </div>
           </div>
