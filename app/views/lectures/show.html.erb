@@ -4,7 +4,7 @@
 
 <% @lecture.content.embeds.each do |adj| %>
       <% image= ActiveStorage::Blob.find_by(id: adj.blob_id) %>
-      <%= cl_image_tag image.key %>
+      <%= cl_image_tag image.key unless image.nil? %>
 
 <% end %>
 
