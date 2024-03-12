@@ -18,8 +18,8 @@
 
 <% if @lecture.lecture != 1 %>
   <button type="button" class="btn btn-primary">anterior</button>
-  <%= id = @lecture.id - 1 %>
-  <%= button_to "prev", course_lecture(id), class: "btn" %>
+ <%# <%= id = @lecture.id - 1 %>
+  <%# <%= button_to "prev", course_lecture_path(id), class: "btn" %>
 
 <% end  %>
 
