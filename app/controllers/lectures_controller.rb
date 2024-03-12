@@ -10,7 +10,13 @@ class LecturesController < ApplicationController
   end
 
   def show
-    @advance = Advance.find_by(user: current_user, course: @lecture.course)
+    @advance = Advance.find_by(user: current_user, course: @lecture.course_id)
+    if @advance.nil? && @lecture.lecture == 1
+      @advance = Advance.new(lecture: 0, user_id: current_user.id, course_id: @lecture.course_id)
+      @advance.save
+    elsif @advance.nil?
+      redirect_to course_path(@lecture.course), status: :found
+    end
   end
 
   def create

@@ -2,12 +2,25 @@
 <p>Find me in app/views/lectures/show.html.erb</p>
 <h2><%= @lecture.title %><h2>
 
-<%= @lecture.content %>
-
 <% @lecture.content.embeds.each do |adj| %>
       <% image= ActiveStorage::Blob.find_by(id: adj.blob_id) %>
       <%= cl_image_tag image.key %>
 
 <% end %>
 
-<p><% @lecture.published %></p>
+<p><%= @lecture.content %></p>
+<p><%= @lecture.published %></p>
+
+
+<%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
+<%= @lecture.lecture %>
+<%= @lecture.course_id %>
+
+<% if @lecture.lecture != 1 %>
+  <button type="button" class="btn btn-primary">anterior</button>
+  <%= id = @lecture.id - 1 %>
+  <%= button_to "prev", course_lecture(id), class: "btn" %>
+
+<% end  %>
+
+<%= link_to "Siguiente", next_lecture_path, class: "btn btn-primary" %>

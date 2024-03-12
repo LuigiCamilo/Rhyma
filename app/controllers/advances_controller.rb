@@ -1,16 +1,32 @@
 class AdvancesController < ApplicationController
   before_action :set_course, only: [:update]
 
+  def next
+    session[:lecture] = params[:lecture]
+    session[:course_id] = params[:course_id]
+    @advance = Advance.find_by(user_id: current_user.id, course_id: session[:course_id])
+    if @advance.nil?
+      create
+    else
+      update if @advance.lecture < session[:lecture]
+        # raise
+    end
+
+    redirect_to edit_course_lecture(@lecture), status: :found
+  end
+
   def create
-    @advance = Advance.new(advance_params)
-    @advance.user = current_user
-    @advance.lecture = 0
+    @advance = Advance.new(lecture: 0, user_id: current_user.id, course_id: session[:course_id])
     @advance.save
+
+    # redirect_to edit_course_lecture(@lecture), status: :no found
   end
 
   def update
-    @advance.lecture = @lecture
-    @advance.save
+    @advance.lecture = session[:lecture]
+    @advance.update(lecture: session[:lecture])
+      # redirect_to edit_course_lecture(@lecture), status: :found
+
   end
 
   private
