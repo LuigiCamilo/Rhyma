@@ -2,8 +2,8 @@ class AdvancesController < ApplicationController
   before_action :set_course, only: [:update]
 
   def next
-    session[:lecture] = params[:lecture]
-    session[:course_id] = params[:course_id]
+    session[:lecture] = params[:lecture].to_i
+    session[:course_id] = params[:course_id].to_i
     @advance = Advance.find_by(user_id: current_user.id, course_id: session[:course_id])
     if @advance.nil?
       create
@@ -12,7 +12,11 @@ class AdvancesController < ApplicationController
         # raise
     end
 
-    redirect_to edit_course_lecture(@lecture), status: :found
+    next_lecture = Lecture.find_by(course_id: session[:course_id], lecture:(session[:lecture]+1) )
+
+
+
+    redirect_to course_lecture_path(session[:course_id], next_lecture), status: :found
   end
 
   def create
