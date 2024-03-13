@@ -29,27 +29,29 @@
   <div class="container">
     <h2 class="">Nuestros contenido</h2>
     <div class="d-flex gap-4 justify-content-center">
+     <%suggestion1 = Course.all.sample%>
       <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+       <%= cl_image_tag suggestion1.photo.key, class: "card_img" %>
         <div class="card-product-infos">
-          <h2>Product name</h2>
-          <p>Product description with <strong>relevant info</strong> only.</p>
+          <h2> <%= link_to suggestion1.title[0..20]+"...", course_path(suggestion1) %> </h2>
         </div>
       </div>
-       <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <%suggestion2 = Course.all.sample%>
+      <div class="card-product">
+       <%= cl_image_tag suggestion2.photo.key, class: "card_img" %>
         <div class="card-product-infos">
-          <h2>Product name</h2>
-          <p>Product description with <strong>relevant info</strong> only.</p>
+          <h2> <%= link_to suggestion2.title[0..20]+"...", course_path(suggestion2) %> </h2>
         </div>
       </div>
-       <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+       <%suggestion3 = Course.all.sample%>
+      <div class="card-product">
+       <%= cl_image_tag suggestion3.photo.key, class: "card_img" %>
         <div class="card-product-infos">
-          <h2>Product name</h2>
-          <p>Product description with <strong>relevant info</strong> only.</p>
+          <h2> <%= link_to suggestion3.title[0..20]+"...", course_path(suggestion3) %> </h2>
         </div>
       </div>
+      </div>
+
 
 
     </div>

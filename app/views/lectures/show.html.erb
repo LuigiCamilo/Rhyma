@@ -1,20 +1,75 @@
-<h1>Lectures#show</h1>
-<p>Find me in app/views/lectures/show.html.erb</p>
-<h2><%= @lecture.title %><h2>
 
-<% @lecture.content.embeds.each do |adj| %>
-      <% image= ActiveStorage::Blob.find_by(id: adj.blob_id) %>
-      <%= cl_image_tag image.key unless image.nil? %>
+<head>
+  <style>
+    /* Personalización adicional si es necesario */
+    .video-thumbnail {
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Video principal -->
+       <div class="col-lg-8">
+       <p><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></p>
+       <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  unless @lecture.video.nil?%>
+        <% @lecture.content.embeds.each do |adj| %>
+          <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
+          <%= cl_image_tag image.key unless image.nil? %>
+        <% end %>
+        <h2 class="mt-3"><%= @lecture.title %></h2>
+        <p><%= @lecture.content %></p>
+      </div>
+      <!-- Videos relacionados -->
+      <div class="col-lg-4">
+      <p>Mas cursos que te pueden interesar <i class="fas fa-eye"></i></p>
+        <div class="row">
+          <div class="col-6">
+            <div class="video-thumbnail mb-3">
+              <%suggestion1 = Course.all.sample%>
+               <%= link_to course_path(suggestion1) do %>
+              <%= cl_image_tag suggestion1.photo.key, class: "img-fluid w-100 h-100" %>
+              <%=suggestion1.title[0..30] + "..."%>
+            <% end %>
+             <!-- <img src="https://via.placeholder.com/150" alt="Video 1" class="img-fluid">-->
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="video-thumbnail mb-3">
+            <%suggestion2 = Course.all.sample%>
+             <%= link_to course_path(suggestion2) do %>
+              <%= cl_image_tag suggestion2.photo.key, class: "img-fluid w-100 h-100" %>
+              <%=suggestion2.title[0..30] + "..."%>
+            <% end %>
 
-<% end %>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="video-thumbnail mb-3">
+              <%suggestion3 = Course.all.sample%>
+              <%= link_to course_path(suggestion3) do %>
+              <%= cl_image_tag suggestion3.photo.key, class: "img-fluid w-100 h-100" %>
+              <%=suggestion3.title[0..10] + "..."%>
+            <% end %>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="video-thumbnail mb-3">
+              <%suggestion4 = Course.all.sample%>
+              <%= link_to course_path(suggestion4) do %>
+              <%= cl_image_tag suggestion4.photo.key, class: "img-fluid w-100 h-100" %>
+              <%=suggestion4.title[0..30] + "..."%>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<p><%= @lecture.content %></p>
-<p><%= @lecture.published %></p>
+    </div>
+    <%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
 
-
-<%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
-<%= @lecture.lecture %>
-<%= @lecture.course_id %>
 
 <% if @lecture.lecture != 1 %>
   <button type="button" class="btn btn-primary">anterior</button>
@@ -24,3 +79,5 @@
 <% end  %>
 
 <%= link_to "Siguiente", next_lecture_path, class: "btn btn-primary" %>
+  </div>
+</body>
