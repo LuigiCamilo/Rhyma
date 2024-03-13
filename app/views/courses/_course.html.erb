@@ -1,10 +1,9 @@
-<div class="col-md-4">
-  <div class="card" style="width: 18rem;">
+<div class="d-flex justify-content-center col-md-4">
+  <div class="card rounded" style="width: 18rem;">
     <%= cl_image_tag course.photo.key, class: "card_img" %>
     <div class="card-body">
-      <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="d-flex card-title-container justify-content-between align-items-center mb-4">
         <h3 class="title card-title"><%= course.title %></h3>
-
       </div>
       <%= link_to "Detalles", course_path(course), class: "btn btn-details2 mr-2" %>
     </div>
