@@ -6,4 +6,6 @@
 <%= @course.description %>
 <p><%= @course.published %></p>
 <p></p>
+<% unless @first_lecture.nil? %>
  <%= link_to "Comenzar", course_lecture_path(@course, @first_lecture), class:"btn btn-details btn-warning shadow-0" %>
+<% end %>
