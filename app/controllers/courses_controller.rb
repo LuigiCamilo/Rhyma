@@ -1,9 +1,13 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
     @courses = Course.select { |course| course.published }
     # course.lectures.positive?
+    # if params[:query].present?
+    #   @courses = Course.search(params[:query])
+    # end
   end
 
   def new
