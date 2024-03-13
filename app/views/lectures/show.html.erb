@@ -67,8 +67,7 @@
         </div>
       </div>
 
-    </div>
-    <%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
+<p><%= @lecture.content %></p>
 
 <% if @lecture.lecture != 1 %>
   <% id = @lecture.id - 1 %>
@@ -76,13 +75,4 @@
 
 <% end  %>
 
-<% if @lecture.lecture != 1 %>
-  <button type="button" class="btn btn-primary">anterior</button>
-  <%= id = @lecture.id - 1 %>
-  <%= button_to "prev", course_lecture(id), class: "btn" %>
-
-<% end  %>
-
 <%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
-  </div>
-</body>

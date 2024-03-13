@@ -85,6 +85,74 @@ courses = [
   { title: 'Como tocar guitarra eléctrica', image: 'electrica_curso.jpg', published: true, theme_id: Theme.where('title = ?', themes[4]).first.id }
 ]
 # Descripciones detalladas para cada curso
+descriptions = {
+  'Teoría Musical. Conceptos Básicos. Tutoriales' => 'Aprender teoría musical es necesario para una experiencia de aprendizaje musical que te permite crecer y entender en su totalidad el lenguaje musical, también te ayudará a que puedas ser más independiente en tu estudio.
+                                                      No importa que género de música quieras o estés tocando, la teoría musical es una base para tu expresión y entendimiento de la disciplina de estudio de la música.
+                                                      En este curso aprenderás los términos básicos indispensables para comenzar el estudio musical o para reforzar los existentes, en especial para aquellos que han desarrollado un oído musical y tocan de manera lírica.',
+
+  'Aprende a tocar el piano con mi curso de Piano Básico'=> 'Si estas interesado en aprender a tocar el piano y no sabes donde comenzar, este curso es para ti. Este curso de piano está dirigido a músicos, pianistas, compositores, o a cualquier persona interesada en comprender cómo utilizar este instrumento para desarrollar la composición de armonías musicales. Al finalizar este curso de piano podrás:<ul><li> Interpretar los principios y los fundamentos básicos de la música y el instrumento.</li><li> Entender qué es y para qué se utilizan las escalas musicales</li><li> Comprender qué son las octavas y las teclas en el piano.</li><li> Utilizar las herramientas del piano para tocar apropiadamente las notas del teclado.</li><li> Usar los acordes para poder tocar melodías en el piano teniendo en cuenta la posición correcta de los dedos para tocar.</li><li> Utilizar las habilidades musicales para poder interpretar canciones y tocarlas</li></ul>',
+  'Cantar desde Cero para Principiantes'=> 'En este curso aprenderás a cantar paso a paso para que puedas escalar poco a poco y compartir tu talento. De esta manera podrás cantar sin lastimar tu garganta por muchos años. En este curso he recopilado las técnicas que he aprendido con vocal coaches de todas partes del mundo (Hungría, Inglaterra, Estados Unidos, Cuba, Puerto Rico y Guatemala). Me han servido a lo largo de mi camino como cantante y las he puesto a tu disposición para que empiezas a entender tu instrumento: la voz. Este curso incluye ejercicios de vocalización y audios mp3 que te ayudarán a practicar lo aprendido en cualquier lugar en que te encuentres sin necesidad de un teclado, piano u instructor. Al final del curso podrás tener una mejor afinación, rango, capacidad respiratoria, proyección y entonación.
+                                                En este curso abordaremos los siguientes temas<ul><li>  Cuidado de la voz : Cómo cuidar de tu voz y por qué es importante la técnica vocal.</li><li> Respiración Correcta: Cómo enviar el aire al lugar correcto y las funciones que la respiración nos brinda para cantar mejor.</li><li>  Appoggio/ Soporte: Cómo encontrar el appoggio y las funciones que este brinda para cantar mejor</li><li> Tesitura: Encuentra tu tesitura y escoge canciones en base a ella..</li><li> Resonancia/ Cantar en la máscara: Desarrolla tu potencia</li><li> Apertura: Cómo encontrar la apertura correcta al cantar.</li><li> Afinación: Desarrolla tu oído y tu entrenamiento musical<li>Tonos y Semitonos: entrenamiento auditivo</li><li>Escalas: Ejercicios con escala mayor y escala cromática</li></li><li>Interpretación: Método para interpretar canciones.</li></ul>',
+  'Guitarra para principiantes'=> '¡Despierta el Guitarrista que llevas dentro! <h3>Lo que aprenderás</h3>Tocar todos los Acordes en la Guitarra por Todo el Mástil. Analizar y entender qué intervalos componen a los Acordes y Escalas. Progresiones de Acordes que podrás utilizar en tus propias composiciones. 6 Ritmos sencillos que podrás usar en casi todos los contextos. Usar el CAPO para cambiar de Tonalidad las canciones. Técnicas de Expresividad para adornar tus Solos de Guitarra. Improvisar de manera sencilla en cualquier contexto. Componer tus propios Solos o melodías en la Guitarra. 5 Frases de Guitarra que podrás estudiar, analizar y modificar a tu gusto. Realizar la Técnica de Púa y Contrapúa correctamente. ¡Desenvolverte en cualquier contexto por ti mismo!',
+  'Batería desde 0: Primeros Pasos, Curso Intensivo'=> 'Aprende a tocar batería en pocas semanas con este curso especialmente compuesto para desarrollar las habilidades más importantes para el principiante.
+                                                          Los nombres y timbres de la batería y su relación con el pentagrama musical.
+                                                          Manos: grip y técnica y golpes básicos
+                                                          Técnica de pies
+                                                          Coordinación: manos y pies
+                                                          Figuras y lectura básica para batería.
+                                                          Disociación: separando y liberando tus extremidades.
+                                                          Ritmos y estilos más famosos
+                                                          Fills de 1, 2 y 4 tiempos de duración',
+  'Como tocar guitarra eléctrica'=> 'Adéntrate en el mundo de la guitarra eléctrica con este curso inicial en el que aprenderás todo lo que siempre quisiste saber de ella: tipos, modelos, funcionamiento, sonidos básicos… Además, trabajaremos la técnica y la iremos perfeccionando mediante canciones creadas especialmente para cada bloque, todas ellas con partitura interactiva, tablatura y pistas de acompañamiento para que les saques el máximo partido. ¿A qué esperas para entrar?',
+
+                                                        }
+
+# Crear cursos
+courses.each do |course|
+  course_new = Course.create!(
+    title: course[:title],
+    description: descriptions[course[:title]],
+    published: course[:published],
+    user_id: User.pluck(:id).sample,
+    theme_id: course[:theme_id]
+  )
+  # Adjuntar imagen al curso
+  image_path = Rails.root.join('app', 'assets', 'images', 'courses', course[:image])
+  image_blob = ActiveStorage::Blob.create_and_upload!(
+    io: File.open(image_path),
+    filename: course[:image],
+    content_type: 'image/jpeg'
+  )
+  course_new.photo.attach(image_blob)
+  course_new.save
+
+end
+
+lectures = [
+  { title: 'El Círculo de Quintas', image: 'circulo_quintas.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171371/development/29u64912r3z7wn4qbmnxxftsf0w6.mp4', video: 'acordes_escalas.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  { title: 'Cómo leer partituras: El Endecagrama Primigenio', image: 'leer_partituras.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710183419/leer_partituras_ppuvoz.mp4' , video: 'leer_partituras.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  { title: '¿Por qué medimos el ritmo así?', image: 'ritmo.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171396/development/3crb9zx1tlsd3spe5aby6n0cj3ru.mp4' , video: 'ritmo.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  { title: '¿Qué es un acorde?. Tipos de Acordes', image: 'acordes.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171430/development/z12fdntsj6oajrkro1s6yg83z83w.mp4' , video: 'acordes.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  { title: '¿Qué es una escala musical?', image: 'escala.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710184848/escala_iqa8iq.mp4' , video: 'escala.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  { title: '¿Qué es un intervalo musical?', image: 'intervalo.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710250484/intervalo_qdhrde.mp4' , video: 'intervalo.mp4',  published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  { title: '¿Qué son las tonalidades?', image: 'tonalidades.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171414/development/cwgeabf69mzrs2kmy8gw4pdl1m7k.mp4' , video: 'tonalidades.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  { title: 'Piano Básico', image: 'piano_basico.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710190354/piano_basico_chjxog.mp4' , video: 'piano_partituras.mp4', published: true, course_id: Course.where('title = ?', "Aprende a tocar el piano con mi curso de Piano Básico").first.id },
+  { title: 'Piano Melodías', image: 'piano_melodias.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185496/piano_melodias_ay9crs.mp4' , video: 'piano_melodias.mp4', published: true, course_id: Course.where('title = ?', "Aprende a tocar el piano con mi curso de Piano Básico").first.id },
+  { title: 'Piano Partituras', image: 'piano_partituras.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185537/piano_partituras_byyyc3.mp4' , video: 'piano_partituras.mp4', published: true, course_id: Course.where('title = ?', "Aprende a tocar el piano con mi curso de Piano Básico").first.id },
+  { title: 'Piano Acompañamientos', image: 'piano_acompañamientos.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710190438/piano_acompa%C3%B1amientos_ifxh25.mp4' , video: 'piano_partituras.mp4', published: true, course_id: Course.where('title = ?', "Aprende a tocar el piano con mi curso de Piano Básico").first.id },
+  { title: 'Lección 1', image: 'canto_1.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185471/canto_1_zsfuoo.mp4', video: 'canto_1.mp4', published: true, course_id: Course.where('title = ?', "Cantar desde Cero para Principiantes").first.id },
+  { title: 'Lección 2', image: 'canto_2.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185506/canto_2_qjhvqr.mp4' , video: 'canto_2.mp4', published: true, course_id: Course.where('title = ?', "Cantar desde Cero para Principiantes").first.id },
+  { title: 'Lección 3', image: 'canto_3.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710247767/canto_3_nq46rj.mp4' , video: 'canto_3.mp4', published: true, course_id: Course.where('title = ?', "Cantar desde Cero para Principiantes").first.id },
+  { title: 'Lección 4', image: 'canto_4.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710247783/canto_4_x4ypri.mp4' , video: 'canto_4.mp4', published: true, course_id: Course.where('title = ?', "Cantar desde Cero para Principiantes").first.id },
+  { title: 'Lección 5', image: 'canto_5.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710247752/canto_5_bkgmk5.mp4' , video: 'canto_5.mp4', published: true, course_id: Course.where('title = ?', "Cantar desde Cero para Principiantes").first.id },
+  { title: 'Lección 1: Posición', image: 'guitarra_1.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185461/guitarra_1_qmx0l7.mp4' , video: 'guitarra_1.mp4', published: true, course_id: Course.where('title = ?', "Guitarra para principiantes").first.id },
+  { title: 'Lección 2: Cambio de cuerdas y afinación', image: 'guitarra_2.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185487/guitarra_2_zyeqyt.mp4' , video: 'guitarra_2.mp4', published: true, course_id: Course.where('title = ?', "Guitarra para principiantes").first.id },
+  { title: 'Clase para Principiantes #1', image: 'bateria_1.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185507/bateria_1_j5bxnk.mp4' , video: 'bateria_1.mp4', published: true, course_id: Course.where('title = ?', "Batería desde 0: Primeros Pasos, Curso Intensivo").first.id },
+  { title: 'Remates - Clase para Principiantes #2', image: 'bateria_2.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185517/bateria_2_o1gm8q.mp4' , video: 'bateria_2.mp4', published: true, course_id: Course.where('title = ?', "Batería desde 0: Primeros Pasos, Curso Intensivo").first.id },
+  { title: 'Como Usar La Púa', image: 'electrica_1.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185517/bateria_2_o1gm8q.mp4' , video: 'electrica_1.mp4', published: true, course_id: Course.where('title = ?', "Aprende a tocar el piano con mi curso de Piano Básico").first.id },
+  { title: 'Ejercicios de digitación', image: 'electrica_2.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185480/electrica_2_uwunwa.mp4' , video: 'electrica_2.mp4', published: true, course_id: Course.where('title = ?', "Como tocar guitarra eléctrica").first.id },
+]
+
 contents = {
   'El Círculo de Quintas' => '<p>El círculo de quintas permite comprender visualmente la relación entre las tonalidades y los acordes. Por ejemplo, puedes utilizar el círculo de quintas para:</p>
                                <ul><li>Recordar las armaduras de clave. La parte superior del círculo muestra la tonalidad de do mayor sin sostenidos ni bemoles. Por cada paso en el sentido de las agujas del reloj se añade un sostenido (♯) a la armadura. Por cada paso en sentido contrario a las agujas del reloj se añade un bemol (♭) a la armadura.</li>
