@@ -51,7 +51,7 @@
               <%suggestion3 = Course.all.sample%>
               <%= link_to course_path(suggestion3) do %>
               <%= cl_image_tag suggestion3.photo.key, class: "img-fluid w-100 h-100" %>
-              <%=suggestion3.title[0..10] + "..."%>
+              <%=suggestion3.title[0..30] + "..."%>
             <% end %>
             </div>
           </div>
@@ -70,6 +70,11 @@
     </div>
     <%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
 
+<% if @lecture.lecture != 1 %>
+  <% id = @lecture.id - 1 %>
+  <%= link_to "prev", course_lecture_path(@lecture.course_id ,id), class: "btn" %>
+
+<% end  %>
 
 <% if @lecture.lecture != 1 %>
   <button type="button" class="btn btn-primary">anterior</button>
@@ -78,6 +83,6 @@
 
 <% end  %>
 
-<%= link_to "Siguiente", next_lecture_path, class: "btn btn-primary" %>
+<%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
   </div>
 </body>
