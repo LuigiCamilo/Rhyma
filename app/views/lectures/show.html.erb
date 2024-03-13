@@ -76,3 +76,4 @@
 <% end  %>
 
 <%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
+<%= button_to "Finalizar", course_complete_path(course_id: @lecture.course_id), class: "btn" %>

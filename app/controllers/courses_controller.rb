@@ -43,6 +43,9 @@ class CoursesController < ApplicationController
     end
   end
 
+  def complete
+  end
+
   def destroy
     @course.published = false
     # @course.lectures.map(&method(:lecture_update))

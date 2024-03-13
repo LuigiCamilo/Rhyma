@@ -59,12 +59,11 @@
                                 class="text-info me-2">Mi Aprendizaje</i>Status de mis cursos</h6>
                         <%@advances.limit(5).each do |advance| %>
 
-                        <% porcentaje = (  advance.lecture / advance.course.lectures.length) * 100 %>
-                        <%=porcentaje%>
+                        <% porcentaje = ( advance.lecture * 100 / advance.course.lectures.length) %>
                         <small><%= advance.course.title %></small>
                         <div class="progress mb-3">
                           <div class="progress-bar progress-bar-striped active" role="progressbar"
-                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:<%porcentaje%>%">
+                          aria-valuenow="<%=porcentaje%>" aria-valuemin="0" aria-valuemax="100" style="width:<%=porcentaje%>%">
                             <%=porcentaje%>%
                           </div>
                         </div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'complete' => 'courses#complete', as: :course_complete
   resources :courses do
     resources :lectures
   end
