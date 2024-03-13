@@ -1,9 +1,13 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
     @courses = Course.select { |course| course.published }
     # course.lectures.positive?
+    # if params[:query].present?
+    #   @courses = Course.search(params[:query])
+    # end
   end
 
   def new
@@ -17,6 +21,8 @@ class CoursesController < ApplicationController
     @advance = nil
     @advance = Advance.find_by(user: current_user, course: @course) if user_signed_in?
     @advance = Advance.new if @advance.nil?
+    @teacher = User.find(@course.user_id)
+    # console
     # raise
   end
 

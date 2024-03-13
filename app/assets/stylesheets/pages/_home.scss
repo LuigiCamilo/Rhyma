@@ -2767,6 +2767,7 @@ textarea.form-control-lg {
 }
 
 .btn {
+  margin-top: 15px;
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
   --bs-btn-font-family: ;
@@ -11564,7 +11565,7 @@ html {
 }
 
 .text-gradient {
-  background: -webkit-linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
+  background: -webkit-linear-gradient(315deg, #BF247A 0%, #D9731A  100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -11658,7 +11659,7 @@ html {
   width: 40px;
   min-width: 40px;
   border-radius: 50%;
-  background-color: #1e30f3;
+  background-color: #2A2359;
   display: grid;
   place-items: center;
   color: white;

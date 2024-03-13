@@ -12,8 +12,8 @@
   <div class="container mt-5">
     <div class="row">
       <!-- Video principal -->
-       <div class="col-lg-8">
-       <p><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></p>
+       <div class="col-lg-9">
+       <p class="border-bottom pb-1 border-top"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></p>
        <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  unless @lecture.video.nil?%>
         <% @lecture.content.embeds.each do |adj| %>
           <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
@@ -23,20 +23,20 @@
         <p><%= @lecture.content %></p>
       </div>
       <!-- Videos relacionados -->
-      <div class="col-lg-4">
-      <p>Mas cursos que te pueden interesar <i class="fas fa-eye"></i></p>
-        <div class="row">
-          <div class="col-6">
+      <div class="col-lg-3">
+      <p class="border-bottom pb-1 border-top">Mas cursos que te pueden interesar <i class="fas fa-eye"></i></p>
+       <div class="border-start ps-3 ">
+         <div class="row">
+          <div class="col-12">
             <div class="video-thumbnail mb-3">
               <%suggestion1 = Course.all.sample%>
                <%= link_to course_path(suggestion1) do %>
-              <%= cl_image_tag suggestion1.photo.key, class: "img-fluid w-100 h-100" %>
+              <%= cl_image_tag suggestion1.photo.key, class: "img-fluid w-40 h-100" %>
               <%=suggestion1.title[0..30] + "..."%>
             <% end %>
-             <!-- <img src="https://via.placeholder.com/150" alt="Video 1" class="img-fluid">-->
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-12">
             <div class="video-thumbnail mb-3">
             <%suggestion2 = Course.all.sample%>
              <%= link_to course_path(suggestion2) do %>
@@ -46,7 +46,7 @@
 
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-12">
             <div class="video-thumbnail mb-3">
               <%suggestion3 = Course.all.sample%>
               <%= link_to course_path(suggestion3) do %>
@@ -55,7 +55,7 @@
             <% end %>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-12">
             <div class="video-thumbnail mb-3">
               <%suggestion4 = Course.all.sample%>
               <%= link_to course_path(suggestion4) do %>
@@ -67,13 +67,25 @@
         </div>
       </div>
     </div>
+       </div>
+<div class="border-top mt-1 pt-3 mb-1 pb-3">
+  <div class="row">
+      <div class="col">
+        <% if @lecture.lecture != 1 %>
+        <% id = @lecture.id - 1 %>
+          <%= button_to course_lecture_path(@lecture.course_id ,id), method: :get, class: "button yellow" do %>
+          <i class="fas fa-arrow-left"></i> Anterior
+          <% end %>
+        <% end  %>
+      </div>
+      <div class="col">
+        <%= button_to next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "button violet" do%>
+        siguiente <i class="fas fa-arrow-right"></i>
+        <%end%>
+      </div>
+    </div>
+</div>
+
+
+
   </div>
-
-<% if @lecture.lecture != 1 %>
-  <% id = @lecture.id - 1 %>
-  <%= link_to "prev", course_lecture_path(@lecture.course_id ,id), class: "btn" %>
-
-<% end  %>
-
-<%= button_to "sigueinte", next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "btn" %>
-<%= button_to "Finalizar", course_complete_path(course_id: @lecture.course_id), class: "btn" %>
