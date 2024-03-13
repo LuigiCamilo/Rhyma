@@ -1,7 +1,7 @@
 
 .button{
   display: inline-block;
-  color: #fff;
+  color: white;
   border:none;
   text-transform: uppercase;
   text-decoration: none;
@@ -36,4 +36,15 @@
 
 .violet{
   background: #812B8C;
+}
+
+.boton{
+  display: inline-block;
+  color: white;
+  border:none;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
