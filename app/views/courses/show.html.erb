@@ -9,7 +9,7 @@
         <% end %>
       </div>
       <h2 class="card-trip-pricing"><%= @teacher.nickname %></h2>
-      <% if current_user.photo.attached? %>
+      <% if @teacher.photo.attached? %>
         <%= cl_image_tag @teacher.photo.key, class: "card-trip-user avatar-bordered" %>
       <% end %>
     </div>
@@ -19,19 +19,25 @@
   <div class="row">
     <div class="col-md-4">
       <h4 class="fw-bold">Reviews</h4>
+      <% if @reviews.length == 0 %>
+        Ningún review por los momentos.
+      <% end %>
       <div class="d-flex">
+
+        <% @reviews.each do |review| %>
+
+
         <div class="card-review">
-          <h3 class="rydarkblue">Review</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <h3 class="rydarkblue"><%= review.user.nickname %></h3>
+          <p><%= review.coment %></p>
           <div class="d-flex gap-2" style="color: #d9731a;">
+          <% review.rating.times do %>
             <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+           <% end %>
           </div>
           <img src="" alt="">
         </div>
+        <% end %>
       </div>
     </div>
     <div class="col-md-8">
