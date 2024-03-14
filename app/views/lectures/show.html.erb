@@ -22,7 +22,7 @@
       <!-- Video principal -->
        <div class="col-lg-9">
        <h2 class="border-bottom pb-1 border-top"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></h2>
-       <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  unless @lecture.video.nil?%>
+       <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  if @lecture.video.attached? %>
         <div>
 
         </div><% @lecture.content.embeds.each do |adj| %>
@@ -37,7 +37,7 @@
       </div>
       <!-- Videos relacionados -->
       <div class="col-lg-3">
-      <p class="border-bottom pb-1 border-top">Más cursos que te pueden interesar <i class="fas fa-eye"></i></p>
+      <p class="border-bottom pb-1 border-top">Más cursos que te pueden interesar <br> <i class="fa-solid fa-arrow-down"></i></p>
        <div class="border-start ps-3 ">
          <div class="row">
           <div class="col-12">
