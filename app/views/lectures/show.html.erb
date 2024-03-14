@@ -67,23 +67,23 @@
         </div>
       </div>
     </div>
-       </div>
+</div>
 <div class="border-top mt-1 pt-3 mb-1 pb-3">
   <div class="row">
-      <div class="col">
-        <% if @lecture.lecture != 1 %>
-        <% id = @lecture.id - 1 %>
-          <%= button_to course_lecture_path(@lecture.course_id ,id), method: :get, class: "button yellow" do %>
-          <i class="fas fa-arrow-left"></i> Anterior
-          <% end %>
-        <% end  %>
-      </div>
-      <div class="col">
-        <%= button_to next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "button violet" do%>
-        siguiente <i class="fas fa-arrow-right"></i>
-        <%end%>
-      </div>
+    <div class="col">
+      <% if @lecture.lecture != 1 %>
+        <%= button_to prev_lecture_path(id: @lecture), class: "button yellow" do %>
+          <i class="fas fa-arrow-left"></i>
+          Anterior
+        <% end %>
+      <% end  %>
     </div>
+    <div class="col">
+      <%= button_to next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "button violet" do %>
+        siguiente <i class="fas fa-arrow-right"></i>
+      <%end%>
+    </div>
+  s</div>
 </div>
 
 
