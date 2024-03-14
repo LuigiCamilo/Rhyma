@@ -1,16 +1,20 @@
-<h1>Lectures#new</h1>
-<p>Find me in app/views/lectures/new.html.erb</p>
-<section class="get-in-touch section_form" style="max-width: 1000px;">
-   <h1 class="title"><i class="fas fa-shopping-bag"> Nueva Lecture</i></h1>
-   <%= simple_form_for @lecture, url: course_lectures_path(params[:course_id]), html: { class: "contact-form row" } do |f| %>
-      <div class="form-field col-lg-4">
-         <%= f.input :title, label: "Titulo", input_html: { class: "input-text js-input", required: true } %>
-      </div>
-      <div class="form-field col-lg-12">
-         <%= f.input :content, as: :rich_text_area, label: "content", input_html: { class: "input-text js-input", required: true } %>
-      </div>
-      <div class="form-field col-lg-12 d-flex">
-         <%= f.button :submit, "Crear", class: "submit-btn btn btn-primary", id: "create_product" %>
-      </div>
-   <% end %>
-</section>
+<div class="register-photo">
+    <div class="image-holder"></div>
+    <div class="form-container">
+        <%= simple_form_for @lecture, url: course_lectures_path(params[:course_id]), html: { class: "contact-form row" } do |f| %>
+            <h2 class="text-center"><strong>Nueva Lección</strong></h2>
+            <div class="form-group">
+                <%= f.input :title, label: "Título", input_html: { class: "input-text js-input", required: true } %>
+            </div>
+            <div class="form-group">
+                <%= f.input :video, label: "Video", as: :file, input_html: { class: "input-text js-input", required: true } %>
+            </div>
+            <div class="form-group">
+                <%= f.input :content, as: :rich_text_area, label: "Contenido", input_html: { class: "input-text js-input", required: true } %>
+            </div>
+            <div class="form-group">
+                <%= f.button :submit, "Crear", class: "submit-btn btn btn-warning", id: "create_product" %>
+            </div>
+        <% end %>
+    </div>
+</div>
