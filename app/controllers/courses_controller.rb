@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
 
   def show
     @reviews = @course.reviews
-    @lectures = @course.lectures
+    @lectures = @course.lectures.order(:lecture)
     @first_lecture = Lecture.find_by(lecture: 1, course_id: @course)
     @advance = nil
     @advance = Advance.find_by(user: current_user, course: @course) if user_signed_in?
@@ -50,6 +50,14 @@ class CoursesController < ApplicationController
   end
 
   def complete
+    # @review_exist = true
+    # raise
+    # # session[:course_id] = params[:id]
+    if current_user.reviews.find_by(course_id: params[:course_id])
+      redirect_to course_path(params[:course_id])
+    else
+      @review = Review.new
+    end
   end
 
   def destroy

@@ -2,46 +2,63 @@
   <div class="card-trip">
     <%= cl_image_tag @course.photo.key, class: "yolo" %>
     <div class="card-trip-infos">
-      <div>
+      <div class="title-course">
         <h2><%= @course.title %></h2>
         <% unless @first_lecture.nil? %>
           <%= link_to "Comenzar", course_lecture_path(@course, @first_lecture), class:"btn btn-details btn-warning shadow-0" %>
         <% end %>
       </div>
       <h2 class="card-trip-pricing"><%= @teacher.nickname %></h2>
-      <% if current_user.photo.attached? %>
+      <% if @teacher.photo.attached? %>
         <%= cl_image_tag @teacher.photo.key, class: "card-trip-user avatar-bordered" %>
       <% end %>
     </div>
   </div>
   <h4 class="fw-bold">Descripción</h4>
-  <p><%= @course.description %></p>
-  <div class="row">
+  <%= @course.description %>
+  <div class="row mt-4 border-top-before">
     <div class="col-md-4">
       <h4 class="fw-bold">Reviews</h4>
+      <% if @reviews.length == 0 %>
+        Ningún review por los momentos.
+      <% end %>
       <div class="d-flex">
+
+        <% @reviews.each do |review| %>
+
+
         <div class="card-review">
-          <h3 class="rydarkblue">Review</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <h3 class="rydarkblue"><%= review.user.nickname %></h3>
+          <p><%= review.coment %></p>
           <div class="d-flex gap-2" style="color: #d9731a;">
+          <% review.rating.times do %>
             <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+           <% end %>
           </div>
           <img src="" alt="">
         </div>
+        <% end %>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 pt-4">
       <ul class="list-group gap-2">
-        <% @lectures.each do |lecture| %>
-          <li class="list-group-item bg-white border"><%= lecture.title %></li>
+        <% @lectures.each_with_index do |lecture, index| %>
+          <% if  @advance.lecture.to_i >= index %>
+            <li class="list-group-item bg-white border list-group-item-action d-flex align-items-center justify-content-between" style="border-radius: 0.7rem;">
+              <%= link_to lecture.title, course_lecture_path(@course, lecture) %>
+              <i class="fa-solid fa-circle-check check-color"></i>
+            </li>
+          <% else %>
+            <li class="list-group-item bg-white border list-group-item-action" style="border-radius: 0.7rem;">
+              <%= lecture.title %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
+      <% if current_user.id == @teacher.id %>
+        <%= link_to "añadir lecture", new_course_lecture_path(@course), class:"btn btn-details btn-warning shadow-0 float-end" %>
+      <% end %>
     </div>
   </div>
-
 
 </div>

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  post 'complete' => 'courses#complete', as: :course_complete
+  get 'courses/:course_id/complete' => 'courses#complete', as: :course_complete
   resources :courses do
     resources :lectures
   end
-
+  resources :reviews, only: [:create]
   devise_for :users
 
   root to: "pages#home"
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   post 'next' => 'advances#next', as: :next_lecture
+  post 'previous' => 'advances#previous', as: :prev_lecture
   # resources :users, only: [:show]
 
   # Defines the root path route ("/")
