@@ -6,6 +6,14 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
+    .video-thumbnail p {
+      padding: 10px;
+    }
+    .video-thumbnail a {
+      text-decoration: none;
+      color: #686868;;
+    }
+
   </style>
 </head>
 <body>
@@ -13,26 +21,31 @@
     <div class="row">
       <!-- Video principal -->
        <div class="col-lg-9">
-       <p class="border-bottom pb-1 border-top"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></p>
+       <h2 class="border-bottom pb-1 border-top"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></h2>
        <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  unless @lecture.video.nil?%>
-        <% @lecture.content.embeds.each do |adj| %>
+        <div>
+
+        </div><% @lecture.content.embeds.each do |adj| %>
           <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
           <%= cl_image_tag image.key unless image.nil? %>
         <% end %>
         <h2 class="mt-3"><%= @lecture.title %></h2>
-        <p><%= @lecture.content %></p>
+        <p class=""><%= @lecture.content %></p>
+        <% @lecture.photos.each do |photo| %>
+         <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+         <% end %>
       </div>
       <!-- Videos relacionados -->
       <div class="col-lg-3">
-      <p class="border-bottom pb-1 border-top">Mas cursos que te pueden interesar <i class="fas fa-eye"></i></p>
+      <p class="border-bottom pb-1 border-top">Más cursos que te pueden interesar <i class="fas fa-eye"></i></p>
        <div class="border-start ps-3 ">
          <div class="row">
           <div class="col-12">
             <div class="video-thumbnail mb-3">
               <%suggestion1 = Course.all.sample%>
                <%= link_to course_path(suggestion1) do %>
-              <%= cl_image_tag suggestion1.photo.key, class: "img-fluid w-40 h-100" %>
-              <%=suggestion1.title[0..30] + "..."%>
+              <%= cl_image_tag suggestion1.photo.key, class: "img-fluid w-40 h-100 rounded-3" %>
+              <p><%=suggestion1.title[0..30] + "..."%></p>
             <% end %>
             </div>
           </div>
@@ -41,7 +54,7 @@
             <%suggestion2 = Course.all.sample%>
              <%= link_to course_path(suggestion2) do %>
               <%= cl_image_tag suggestion2.photo.key, class: "img-fluid w-100 h-100" %>
-              <%=suggestion2.title[0..30] + "..."%>
+              <p><%=suggestion2.title[0..30] + "..."%></p>
             <% end %>
 
             </div>
@@ -51,7 +64,7 @@
               <%suggestion3 = Course.all.sample%>
               <%= link_to course_path(suggestion3) do %>
               <%= cl_image_tag suggestion3.photo.key, class: "img-fluid w-100 h-100" %>
-              <%=suggestion3.title[0..30] + "..."%>
+              <p><%=suggestion3.title[0..30] + "..."%></p>
             <% end %>
             </div>
           </div>
@@ -60,7 +73,7 @@
               <%suggestion4 = Course.all.sample%>
               <%= link_to course_path(suggestion4) do %>
               <%= cl_image_tag suggestion4.photo.key, class: "img-fluid w-100 h-100" %>
-              <%=suggestion4.title[0..30] + "..."%>
+              <p><%=suggestion4.title[0..30] + "..."%></p>
             <% end %>
             </div>
           </div>
