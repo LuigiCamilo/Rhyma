@@ -8,10 +8,17 @@
           <%= link_to "Comenzar", course_lecture_path(@course, @first_lecture), class:"btn btn-details btn-warning shadow-0" %>
         <% end %>
       </div>
+<<<<<<< HEAD
         <h2 class="card-trip-pricing"><%= @teacher.nickname %></h2>
         <% if current_user.photo.attached? %>
           <%= cl_image_tag @teacher.photo.key, class: "card-trip-user avatar-bordered" %>
         <% end %>
+=======
+      <h2 class="card-trip-pricing"><%= @teacher.nickname %></h2>
+      <% if @teacher.photo.attached? %>
+        <%= cl_image_tag @teacher.photo.key, class: "card-trip-user avatar-bordered" %>
+      <% end %>
+>>>>>>> 55745960bd6fdc89a5a45059d58af9c5642816a6
     </div>
   </div>
   <h4 class="fw-bold">Descripción</h4>
@@ -19,19 +26,25 @@
   <div class="row mt-4 border-top-before">
     <div class="col-md-4">
       <h4 class="fw-bold">Reviews</h4>
+      <% if @reviews.length == 0 %>
+        Ningún review por los momentos.
+      <% end %>
       <div class="d-flex">
+
+        <% @reviews.each do |review| %>
+
+
         <div class="card-review">
-          <h3 class="rydarkblue">Review</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <h3 class="rydarkblue"><%= review.user.nickname %></h3>
+          <p><%= review.coment %></p>
           <div class="d-flex gap-2" style="color: #d9731a;">
+          <% review.rating.times do %>
             <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+           <% end %>
           </div>
           <img src="" alt="">
         </div>
+        <% end %>
       </div>
     </div>
     <div class="col-md-8 pt-4">

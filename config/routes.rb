@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get 'courses/:course_id/complete' => 'courses#complete', as: :course_complete
   resources :courses do
     resources :lectures
   end
-
+  resources :reviews, only: [:create]
   devise_for :users
 
   root to: "pages#home"

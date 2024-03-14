@@ -49,6 +49,17 @@ class CoursesController < ApplicationController
     end
   end
 
+  def complete
+    # @review_exist = true
+    # raise
+    # # session[:course_id] = params[:id]
+    if current_user.reviews.find_by(course_id: params[:course_id])
+      redirect_to course_path(params[:course_id])
+    else
+      @review = Review.new
+    end
+  end
+
   def destroy
     @course.published = false
     # @course.lectures.map(&method(:lecture_update))
