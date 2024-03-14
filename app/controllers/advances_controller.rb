@@ -18,6 +18,13 @@ class AdvancesController < ApplicationController
     end
   end
 
+  def previous
+    @lecture = Lecture.find(params[:id])
+    prev_lecture = Lecture.find_by(course_id: @lecture.course_id, lecture: (@lecture.lecture - 1))
+    redirect_to course_lecture_path(@lecture.course_id, prev_lecture), status: :found
+    # raise
+  end
+
   def create
     @advance = Advance.new(lecture: 0, user_id: current_user.id, course_id: session[:course_id])
     @advance.save

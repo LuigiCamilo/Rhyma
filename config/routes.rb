@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   post 'next' => 'advances#next', as: :next_lecture
+  post 'previous' => 'advances#previous', as: :prev_lecture
   # resources :users, only: [:show]
 
   # Defines the root path route ("/")

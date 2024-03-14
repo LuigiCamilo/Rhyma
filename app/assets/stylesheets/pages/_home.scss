@@ -4207,6 +4207,7 @@ textarea.form-control-lg {
   flex: 1 1 auto;
   padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   color: var(--bs-card-color);
+  background-color: white;
 }
 
 .card-title {
@@ -7894,6 +7895,9 @@ textarea.form-control-lg {
   padding-left: 0.5rem !important;
 }
 
+.px-2 p{
+  text-align: justify;
+}
 .px-3 {
   padding-right: 1rem !important;
   padding-left: 1rem !important;

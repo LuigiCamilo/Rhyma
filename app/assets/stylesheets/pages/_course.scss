@@ -71,3 +71,26 @@
   // -webkit-box-shadow: 6px 10px 22px 0px rgba(0,0,0,0.2);
   // box-shadow: 6px 10px 22px 0px rgba(0,0,0,0.2);
 }
+.border-top-before{
+  position: relative;
+  padding-top: 1rem;
+}
+.border-top-before::before{
+  background-color: #D9731A;
+  content: "";
+  height: 2px;
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 77px;
+}
+.title-course{
+  min-height: 80px;
+}
+.card-trip-pricing{
+  position: relative;
+  top: -25px;
+}
+.check-color{
+  color: #d9731a;
+}
