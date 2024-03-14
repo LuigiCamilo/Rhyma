@@ -1,15 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
   <div class="container px-5">
-    <a class="navbar-brand" href="/"><span class="fw-bolder text-primary">Rhyma</span></a>
+    <a class="navbar-brand" href="/"><span class="fw-bolder fs-4 ">Rhyma</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
           <li>
-            <form class="search-container" action="//llamaswill.tumblr.com/search">
-              <input id="search-box" type="text" class="search-box" name="q" />
-              <label for="search-box"><span class="glyphicon glyphicon-search search-icon"><i class="fa-solid fa-magnifying-glass"></i></span></label>
-              <input type="submit" id="search-submit" />
-            </form>
+            <%= form_with url: courses_path, method: :get, class: "search-container" do  |form|%>
+                <%= text_field_tag :query,
+                  params[:query],
+                  id:"search-box",
+                  type: "text",
+                  class: "search-box",
+                  placeholder: "Busca por título o por tema",
+                  label: "hola"
+                %>
+                <%= form.label :q, for: "search-box" do %>
+                <span class="glyphicon glyphicon-search search-icon">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+              <% end %>
+                <%= button_tag type: "submit", id:"search-submit" %>
+            <% end %>
           </li>
           <li class="nav-item"><%= link_to "Home", "/", class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Cursos", "/courses", class: "nav-link" %></li>

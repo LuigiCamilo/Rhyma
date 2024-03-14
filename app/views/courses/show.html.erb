@@ -8,17 +8,10 @@
           <%= link_to "Comenzar", course_lecture_path(@course, @first_lecture), class:"btn btn-details btn-warning shadow-0" %>
         <% end %>
       </div>
-<<<<<<< HEAD
-        <h2 class="card-trip-pricing"><%= @teacher.nickname %></h2>
-        <% if current_user.photo.attached? %>
-          <%= cl_image_tag @teacher.photo.key, class: "card-trip-user avatar-bordered" %>
-        <% end %>
-=======
       <h2 class="card-trip-pricing"><%= @teacher.nickname %></h2>
       <% if @teacher.photo.attached? %>
         <%= cl_image_tag @teacher.photo.key, class: "card-trip-user avatar-bordered" %>
       <% end %>
->>>>>>> 55745960bd6fdc89a5a45059d58af9c5642816a6
     </div>
   </div>
   <h4 class="fw-bold">Descripción</h4>
@@ -50,7 +43,7 @@
     <div class="col-md-8 pt-4">
       <ul class="list-group gap-2">
         <% @lectures.each_with_index do |lecture, index| %>
-          <% if  @advance.lecture.to_i >= index %>
+          <% if  @advance.lecture >= index %>
             <li class="list-group-item bg-white border list-group-item-action d-flex align-items-center justify-content-between" style="border-radius: 0.7rem;">
               <%= link_to lecture.title, course_lecture_path(@course, lecture) %>
               <i class="fa-solid fa-circle-check check-color"></i>
