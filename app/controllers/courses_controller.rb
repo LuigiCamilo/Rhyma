@@ -5,9 +5,9 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.select { |course| course.published }
     # course.lectures.positive?
-    # if params[:query].present?
-    #   @courses = Course.search(params[:query])
-    # end
+    if params[:query].present?
+      @courses = Course.search(params[:query])
+    end
   end
 
   def new

@@ -3754,6 +3754,7 @@ textarea.form-control-lg {
   align-items: center;
   justify-content: space-between;
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+  box-shadow: -2px 3px 20px 0px rgba(0, 0, 0, 0.1);
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -8116,6 +8117,7 @@ textarea.form-control-lg {
 
 .fw-bolder {
   font-weight: bolder !important;
+  color: #812B8C;
 }
 
 .lh-1 {
@@ -11659,7 +11661,7 @@ html {
   width: 40px;
   min-width: 40px;
   border-radius: 50%;
-  background-color: #2A2359;
+  background-color: #812b8c;
   display: grid;
   place-items: center;
   color: white;
