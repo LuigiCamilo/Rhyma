@@ -32,7 +32,7 @@
         <h2 class="mt-3"><%= @lecture.title %></h2>
         <p class=""><%= @lecture.content %></p>
         <% @lecture.photos.each do |photo| %>
-         <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+         <%= cl_image_tag photo.key, width: 400 %>
          <% end %>
       </div>
       <!-- Videos relacionados -->
