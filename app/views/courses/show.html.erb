@@ -37,7 +37,7 @@
     <div class="col-md-8 pt-4">
       <ul class="list-group gap-2">
         <% @lectures.each_with_index do |lecture, index| %>
-          <% if  @advance.lecture >= index %>
+          <% if  @advance.lecture.to_i >= index %>
             <li class="list-group-item bg-white border list-group-item-action d-flex align-items-center justify-content-between" style="border-radius: 0.7rem;">
               <%= link_to lecture.title, course_lecture_path(@course, lecture) %>
               <i class="fa-solid fa-circle-check check-color"></i>
