@@ -5,11 +5,27 @@
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
           <li>
-            <form class="search-container" action="//llamaswill.tumblr.com/search">
+            <%# <form class="search-container" action="//llamaswill.tumblr.com/search">
               <input id="search-box" type="text" class="search-box" name="q" />
               <label for="search-box"><span class="glyphicon glyphicon-search search-icon"><i class="fa-solid fa-magnifying-glass"></i></span></label>
               <input type="submit" id="search-submit" />
-            </form>
+            </form> %>
+            <%= form_with url: courses_path, method: :get, class: "search-container" do  |form|%>
+                <%= text_field_tag :query,
+                  params[:query],
+                  id:"search-box",
+                  type: "text",
+                  class: "search-box",
+                  placeholder: "Busca por título o por tema",
+                  label: "hola"
+                %>
+                <%= form.label :q, for: "search-box" do %>
+                <span class="glyphicon glyphicon-search search-icon">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+              <% end %>
+                <%= button_tag type: "submit", id:"search-submit" %>
+            <% end %>
           </li>
           <li class="nav-item"><%= link_to "Home", "/", class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Cursos", "/courses", class: "nav-link" %></li>
