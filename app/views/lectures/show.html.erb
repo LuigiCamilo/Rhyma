@@ -83,6 +83,9 @@
         siguiente <i class="fas fa-arrow-right"></i>
         <%end%>
       </div>
+      <%= button_to course_complete_path(course_id: @lecture.course_id), method: :get, class: "button violet" do%>
+        finalizar
+        <%end%>
     </div>
 </div>
 

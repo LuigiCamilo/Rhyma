@@ -5,11 +5,12 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    # @review.course_id = params[:id]
     @review.user = current_user
-    if @review.save
-      redirect_to review_path(@review)
+    if @review.save!
+      redirect_to course_path(@review.course)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to course_complete_path, status: :unprocessable_entity
     end
   end
 
