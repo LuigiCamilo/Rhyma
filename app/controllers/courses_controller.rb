@@ -6,7 +6,11 @@ class CoursesController < ApplicationController
     @courses = Course.select { |course| course.published }
     # course.lectures.positive?
     if params[:query].present?
-      @courses = Course.search(params[:query])
+      query = params[:query].downcase
+      @courses = Course.all.select do |course|
+        description_text = course.description.to_s.downcase
+      description_text.include?(query)
+      end
     end
   end
 
@@ -51,12 +55,18 @@ class CoursesController < ApplicationController
     # @review_exist = true
     # raise
     # # session[:course_id] = params[:id]
+    @advance = Advance.find_by(user_id: current_user.id, course_id: session[:course_id])
     if current_user.reviews.find_by(course_id: params[:course_id])
       redirect_to course_path(params[:course_id])
     else
+      course = Course.find(params[:course_id])
+      @advance = Advance.find_by(user_id: current_user.id, course_id: params[:course_id])
+      @advance.lecture = course.lectures.length
+      @advance.save
       @review = Review.new
     end
   end
+
 
   def destroy
     @course.published = false
