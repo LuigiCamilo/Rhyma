@@ -68,7 +68,8 @@
     </div>
 </div>
 <div class="border-top mt-1 pt-3 mb-1 pb-3">
-  <div class="row">
+  <div class="col-md-9">
+    <div class="row">
     <div class="col">
       <% if @lecture.lecture != 1 %>
         <%= button_to prev_lecture_path(id: @lecture), class: "button yellow" do %>
@@ -77,7 +78,7 @@
         <% end %>
       <% end  %>
     </div>
-    <div class="col">
+    <div class="col d-flex justify-content-end">
       <% if @finalizar.nil? %>
         <%= button_to course_complete_path(course_id: @lecture.course_id), method: :get, class: "button violet" do%>
             finalizar
@@ -87,6 +88,7 @@
           siguiente <i class="fas fa-arrow-right"></i>
         <%end%>
       <%end%>
+    </div>
     </div>
   </div>
 </div>
