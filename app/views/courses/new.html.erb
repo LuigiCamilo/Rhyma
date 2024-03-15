@@ -13,7 +13,7 @@
         <%= f.input :photo, label: "Foto", as: :file, input_html: { id:"photo-product", class: "form-control", required: true } %>
       </div>
       <div class="form-group">
-        <%= f.input :description, as: :rich_text_area, label: "Descripción", input_html: { class: "form-control", required: true } %>
+        <%= f.input :description, as: :rich_text_area, label: "Descripción", input_html: { required: true } %>
       </div>
       <div class="form-group">
         <%= f.button :submit, "Crear", class: "btn btn-warning btn-block" %>

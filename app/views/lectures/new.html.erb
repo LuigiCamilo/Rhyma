@@ -1,4 +1,7 @@
-<%= simple_form_for @lecture, url: course_lectures_path(params[:course_id]), html: { class: "contact-form row" } do |f| %>
+<div class="register-photo">
+    <div class="image-holder"></div>
+    <div class="form-container">
+        <%= simple_form_for @lecture, url: course_lectures_path(params[:course_id]), html: { class: "contact-form row" } do |f| %>
             <h2 class="text-center"><strong>Nueva Lección</strong></h2>
             <div class="form-group">
                 <%= f.input :title, label: "Título", input_html: { class: "input-text js-input", required: true } %>
@@ -13,3 +16,5 @@
                 <%= f.button :submit, "Crear", class: "submit-btn btn btn-warning", id: "create_product" %>
             </div>
         <% end %>
+    </div>
+</div>
