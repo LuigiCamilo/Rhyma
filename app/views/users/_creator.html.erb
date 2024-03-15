@@ -48,7 +48,8 @@
                     <%@user.courses.each do |course|%>
                         <%# <%= link_to "Ir al curso" course_path(course), style: "text-decoration: none; color: white;"%>
                         <div class="d-flex align-items-center justify-content-between border-bottom mb-2">
-                        <div class="card-product" style="background: #D9731A; opacity: 0.8;">
+
+                        <div class="card-product" style="background: #BF3939; opacity: 0.8;">
                          <%= cl_image_tag course.photo.key if course.photo.attached? %>
                         <div class="card-product-infos">
                           <h2> <%=course.title%></h2>

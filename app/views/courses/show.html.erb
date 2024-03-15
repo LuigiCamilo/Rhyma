@@ -15,14 +15,14 @@
     </div>
   </div>
   <h4 class="fw-bold">Descripción</h4>
-  <%= @course.description %>
+  <%= content_tag :div, @course.description.body.html_safe, class: "lecture-content" %>
   <div class="row mt-4 border-top-before">
     <div class="col-md-4">
       <h4 class="fw-bold">Reviews</h4>
       <% if @reviews.length == 0 %>
         Ningún review por los momentos.
       <% end %>
-      <div class="d-flex">
+      <div class="d-flex flex-column gap-4 pe-2 scroll-reviews">
 
         <% @reviews.each do |review| %>
 
@@ -43,7 +43,7 @@
     <div class="col-md-8 pt-4">
       <ul class="list-group gap-2">
         <% @lectures.each_with_index do |lecture, index| %>
-          <% if  user_signed_in? && @advance.lecture.to_i >= index %>
+          <% if  user_signed_in? && !@advance.lecture.nil? &&@advance.lecture >= index %>
             <li class="list-group-item bg-white border list-group-item-action d-flex align-items-center justify-content-between" style="border-radius: 0.7rem;">
               <%= link_to lecture.title, course_lecture_path(@course, lecture) %>
               <i class="fa-solid fa-circle-check check-color"></i>
