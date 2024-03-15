@@ -6,7 +6,12 @@ class CoursesController < ApplicationController
     @courses = Course.select { |course| course.published }
     # course.lectures.positive?
     if params[:query].present?
-      @courses = Course.search(params[:query])
+      query = params[:query].downcase
+
+      @courses = Course.all.select do |course|
+        description_text = course.description.to_s.downcase
+      description_text.include?(query)
+      end
     end
   end
 

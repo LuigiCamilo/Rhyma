@@ -20,7 +20,7 @@ $tl: 0.6s; // transition length
   background: #f8d9ea99;
   & + label .search-icon {    color: black    }
   &:hover {
-    color: white;
+    color: black;
     background: #BF247A;
     & + label .search-icon {    color: white    }
   }
