@@ -11,6 +11,9 @@
 puts "Limpiando datos previos.."
 User.destroy_all
 Theme.destroy_all
+Course.destroy_all
+Lecture.destroy_all
+Review.destroy_all
 puts "Datos descartados!"
 
 themes = ["Teoria musical", "Instrumentos de viento", "Instrumentos de cuerdas", "Instrumentos de percusión", "Instrumentos eléctricos", "Canto", "Otros" ]

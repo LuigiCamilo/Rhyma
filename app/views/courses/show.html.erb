@@ -14,7 +14,7 @@
       <% end %>
     </div>
   </div>
-  <h4 class="fw-bold">Descripción</h4>
+  <h3 class="fw-bold fs-4">Descripción</h3>
   <%= @course.description %>
   <div class="row mt-4 border-top-before">
     <div class="col-md-4">
@@ -22,7 +22,7 @@
       <% if @reviews.length == 0 %>
         Ningún review por los momentos.
       <% end %>
-      <div class="d-flex">
+      <div class="d-flex flex-column gap-4 pe-2 scroll-reviews">
 
         <% @reviews.each do |review| %>
 
