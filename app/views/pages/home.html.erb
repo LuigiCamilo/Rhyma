@@ -33,21 +33,21 @@
     <div class="d-flex gap-4 justify-content-center">
      <%suggestion1 = Course.all.sample%>
       <div class="card-product">
-       <%= cl_image_tag suggestion1.photo.key, class: "card_img" %>
+       <%= cl_image_tag suggestion1.photo.key, class: "card_img" if suggestion1.photo.attached? %>
         <div class="card-product-infos">
           <h2> <%= link_to suggestion1.title, course_path(suggestion1) %> </h2>
         </div>
       </div>
         <%suggestion2 = Course.all.sample%>
       <div class="card-product">
-       <%= cl_image_tag suggestion2.photo.key, class: "card_img" %>
+       <%= cl_image_tag suggestion2.photo.key, class: "card_img" if suggestion2.photo.attached?%>
         <div class="card-product-infos">
           <h2> <%= link_to suggestion2.title, course_path(suggestion2) %> </h2>
         </div>
       </div>
        <%suggestion3 = Course.all.sample%>
       <div class="card-product">
-       <%= cl_image_tag suggestion3.photo.key, class: "card_img" %>
+       <%= cl_image_tag suggestion3.photo.key, class: "card_img" if suggestion3.photo.attached? %>
         <div class="card-product-infos">
           <h2> <%= link_to suggestion3.title, course_path(suggestion3) %> </h2>
         </div>
