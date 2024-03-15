@@ -275,26 +275,6 @@ contents = {
                                 <p>Para los principiantes que buscan mejorar su digitación de guitarra, una guitarra eléctrica podría ser una mejor opción que una guitarra acústica. Las guitarras eléctricas generalmente usan cuerdas de níquel de calibre más ligero que son más fáciles de presionar y que ceden a la presión de los dedos más fácilmente que las cuerdas de bronce de la guitarra acústica. Una vez que el jugador ha desarrollado suficiente comodidad en la guitarra eléctrica, puede pasar a la guitarra acústica, lo que puede ser algo más difícil con respecto a la digitación de la guitarra.</p>',
 }
 
-# Crear cursos
-courses.each do |course|
-  course_new = Course.create!(
-    title: course[:title],
-    description: descriptions[course[:title]],
-    published: course[:published],
-    user_id: User.pluck(:id).sample,
-    theme_id: course[:theme_id]
-  )
-  # Adjuntar imagen al curso
-  image_path = Rails.root.join('app', 'assets', 'images', 'courses', course[:image])
-  image_blob = ActiveStorage::Blob.create_and_upload!(
-    io: File.open(image_path),
-    filename: course[:image],
-    content_type: 'image/jpeg'
-  )
-  course_new.photo.attach(image_blob)
-  course_new.save
-end
-
 require "open-uri"
 
 # Crear lectures
