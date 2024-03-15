@@ -1,33 +1,20 @@
 
-<head>
-  <style>
-    /* Personalización adicional si es necesario */
-    .video-thumbnail {
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-    .video-thumbnail p {
-      padding: 10px;
-    }
-    .video-thumbnail a {
-      text-decoration: none;
-      color: #686868;;
-    }
-
-  </style>
-</head>
 <body>
   <div class="container mt-5">
     <div class="row">
       <!-- Video principal -->
        <div class="col-lg-9">
-       <h2 class="border-bottom py-2 border-top"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></h2>
+       <h2 class="border-bottom pb-1 border-top purple-text"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></h2>
        <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  if @lecture.video.attached? %>
 
-        <h2 class="mt-3"><%= @lecture.title %></h2>
-        <p class=""><%= @lecture.content %></p>
+        <%  @lecture.content.embeds.each do |adj| %>
+          <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
+          <%= cl_image_tag image.key unless image.nil? %>
+        <% end %>
+        <h2 class="mt-4 mb-4 purple-text"><%= @lecture.title %></h2>
+        <%= content_tag :div, @lecture.content.body.html_safe, class: "lecture-content" %>
         <% @lecture.photos.each do |photo| %>
-         <%= cl_image_tag photo.key, width: 400 %>
+         <%= cl_image_tag photo.key, width: 400, class:"centered-image" %>
          <% end %>
          <% @lecture.content.embeds.each do |adj| %>
           <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
