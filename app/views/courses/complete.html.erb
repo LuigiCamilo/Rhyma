@@ -1,4 +1,37 @@
 <div class="container">
+<div class="register-photo">
+  <div class="image-holder"></div>
+  <div class="form-container">
+    <%= simple_form_for @review, html: { class: "contact-form row" } do |f| %>
+        <%= f.hidden_field :course_id, value: params[:course_id] %>
+      <h2 class="text-center"><strong>Cuentanos tu experiencia!</strong></h2>
+      <div class="form-group">
+         <%= f.input :rating, collection: [1,2,3,4,5], prompt: 'Select Rating' %>
+      </div>
+      <div class="form-group">
+        <%= f.input :coment, label: "Comentario", input_html: { class: "input-text js-input", required: true } %>
+      </div>
+      <div class="form-group">
+        <%= f.button :submit, "Crear", class: "submit-btn btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <h1 class="mt-4"> Curso Completado!</h1>
 
 
