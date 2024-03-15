@@ -23,7 +23,7 @@
       </div>
       <!-- Videos relacionados -->
       <div class="col-lg-3">
-      <p class="border-bottom pb-1 border-top">Más cursos que te pueden interesar <br> <i class="fa-solid fa-arrow-down"></i></p>
+      <p class="border-bottom py-2 border-top text-center">Más cursos que te pueden interesar <br> <i class="fa-solid fa-arrow-down"></i></p>
        <div class="border-start ps-3 ">
          <div class="row">
           <div class="col-12">
@@ -78,14 +78,17 @@
       <% end  %>
     </div>
     <div class="col">
-      <%= button_to next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "button violet" do %>
-        siguiente <i class="fas fa-arrow-right"></i>
-      <%end%>
-      <%= button_to course_complete_path(course_id: @lecture.course_id), method: :get, class: "button violet" do%>
-          finalizar
+      <% if @finalizar.nil? %>
+        <%= button_to course_complete_path(course_id: @lecture.course_id), method: :get, class: "button violet" do%>
+            finalizar
+        <%end%>
+      <% else %>
+        <%= button_to next_lecture_path(lecture:@lecture.lecture, course_id: @lecture.course_id), class: "button violet" do %>
+          siguiente <i class="fas fa-arrow-right"></i>
+        <%end%>
       <%end%>
     </div>
-  s</div>
+  </div>
 </div>
 
 
