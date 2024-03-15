@@ -51,14 +51,14 @@
 
                         <div class="card-product" style="background: #BF3939; opacity: 0.8;">
                          <%= cl_image_tag course.photo.key if course.photo.attached? %>
-                        <div class="card-product-infos">
-                          <h2> <%=course.title%></h2>
+                        <div class="card-product-infos" style="color: #ffffff;">
+                          <h2 class="mt-2"> <%=course.title%></h2>
                           <p>Fecha de creacion: <%=course.created_at%></p>
                           <%average_rating = Review.where(user_id: @user.id, course_id: course.id).average(:rating)%>
                           <%if average_rating.nil?  %>
-                          <p style="text-align: rigth;">Rating 0%</p>
+                          <p style="text-align: rigth;"> <strong>Rating 0%</strong> </p>
                           <%else%>
-                          <p>Rating <%=average_rating%>%</p>
+                          <p><strong>Rating <%=average_rating%>%</strong></p>
                           <%end%>
                           <div class="mb-3">
                           <p>
