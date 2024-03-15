@@ -4,7 +4,7 @@
     <div class="row">
       <!-- Video principal -->
        <div class="col-lg-9">
-       <h2 class="border-bottom pb-1 border-top"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></h2>
+       <h2 class="border-bottom pb-1 border-top purple-text"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></h2>
        <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  if @lecture.video.attached? %>
 
         <%  @lecture.content.embeds.each do |adj| %>
