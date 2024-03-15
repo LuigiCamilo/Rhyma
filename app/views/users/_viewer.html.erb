@@ -53,8 +53,8 @@
 
 
                     <div class="col-12 bg-white px-3 pb-2">
-                        <h6 class="d-flex align-items-center mb-3 fw-bold py-3"><i
-                                class="text-info me-2">Mi Aprendizaje</i>Status de mis cursos</h6>
+                        <h6 class="d-flex align-items-center mb-3 fw-bold py-3">
+                          <i class="text-info me-2">Mi Aprendizaje</i>Status de mis cursos</h6>
                         <%@advances.limit(5).each do |advance| %>
                         <% porcentaje = ( advance.lecture * 100 / advance.course.lectures.length) %>
                         <small><%= advance.course.title %></small>
