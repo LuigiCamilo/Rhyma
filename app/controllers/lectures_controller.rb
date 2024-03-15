@@ -11,6 +11,7 @@ class LecturesController < ApplicationController
 
   def show
     @advance = Advance.find_by(user: current_user, course: @lecture.course_id)
+    @finalizar = Lecture.find_by(course_id: @lecture.course_id, lecture: (@lecture.lecture + 1))
     if @advance.nil? && @lecture.lecture == 1
       @advance = Advance.new(lecture: 0, user_id: current_user.id, course_id: @lecture.course_id)
       @advance.save
