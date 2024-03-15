@@ -15,7 +15,7 @@
     </div>
   </div>
   <h4 class="fw-bold">Descripción</h4>
-  <%= @course.description %>
+  <%= content_tag :div, @course.description.body.html_safe, class: "lecture-content" %>
   <div class="row mt-4 border-top-before">
     <div class="col-md-4">
       <h4 class="fw-bold">Reviews</h4>
