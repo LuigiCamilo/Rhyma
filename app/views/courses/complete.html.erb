@@ -1,7 +1,43 @@
 <div class="container">
+<div class="rating">
+  <input type="radio" name="rating-start" class="rating__input" hidden id="star1">
+    <label for="star1" class="rating__label">
+      <svg class="rating__svg" xmlns="http://www.w3.org/2000/svg" width="300px" height="275px" viewBox="0 0 300 275" version="1.1">
+<polygon  color="orange" points="150,25 179,111 269,111 197,165  223,251 150,200 77,251 103,165 31,111 121,111"/>
+</svg>
+  </label>
+  <input type="radio" name="rating-start" class="rating__input" hidden id="star2">
+    <label for="star2" class="rating__label">
+      <svg class="rating__svg" xmlns="http://www.w3.org/2000/svg" width="300px" height="275px" viewBox="0 0 300 275" version="1.1">
+<polygon  color="orange" points="150,25 179,111 269,111 197,165  223,251 150,200 77,251 103,165 31,111 121,111"/>
+</svg>
+  </label>
+  <input type="radio" name="rating-start" class="rating__input" hidden="hidden" id="star3">
+    <label for="star3" class="rating__label">
+      <svg class="rating__svg" xmlns="http://www.w3.org/2000/svg" width="300px" height="275px" viewBox="0 0 300 275" version="1.1">
+<polygon  color="orange" points="150,25 179,111 269,111 197,165  223,251 150,200 77,251 103,165 31,111 121,111"/>
+</svg>
+  </label>
+  <input type="radio" name="rating-start" class="rating__input" hidden="hidden" id="star4">
+    <label for="star4" class="rating__label">
+      <svg class="rating__svg" xmlns="http://www.w3.org/2000/svg" width="300px" height="275px" viewBox="0 0 300 275" version="1.1">
+<polygon  color="orange" points="150,25 179,111 269,111 197,165  223,251 150,200 77,251 103,165 31,111 121,111"/>
+</svg>
+  </label>
+  <input type="radio" name="rating-start" class="rating__input" hidden="hidden" id="star5">
+    <label for="star5" class="rating__label">
+      <svg class="rating__svg" xmlns="http://www.w3.org/2000/svg" width="300px" height="275px" viewBox="0 0 300 275" version="1.1">
+<polygon  color="orange" points="150,25 179,111 269,111 197,165  223,251 150,200 77,251 103,165 31,111 121,111"/>
+</svg>
+  </label>
+  <input type="radio" name="rating-start" class="rating__input" hidden="hidden" id="star6">
+    <label for="star6" class="rating__label">
+      <svg class="rating__svg" xmlns="http://www.w3.org/2000/svg" width="300px" height="275px" viewBox="0 0 300 275" version="1.1">
+<polygon  color="orange" points="150,25 179,111 269,111 197,165  223,251 150,200 77,251 103,165 31,111 121,111"/>
+</svg>
+  </label>
+</div>
   <h1 class="mt-4"> Curso Completado!</h1>
-
-
     <section class="get-in-touch section_form" style="max-width: 1000px;">
     <h1 class="title"><i class="fas fa-shopping-bag"> Comentanos tu experiencia:</i></h1>
     <%= simple_form_for @review, html: { class: "contact-form row" } do |f| %>
