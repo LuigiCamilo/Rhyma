@@ -1,6 +1,6 @@
 <div class="container py-4">
   <div class="card-trip">
-    <%= cl_image_tag @course.photo.key, class: "yolo" %>
+    <%= cl_image_tag @course.photo.key, class: "yolo" if @course.photo.attached? %>
     <div class="card-trip-infos">
       <div class="title-course">
         <h2><%= @course.title %></h2>
