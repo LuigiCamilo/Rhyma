@@ -11,7 +11,7 @@
           <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
           <%= cl_image_tag image.key unless image.nil? %>
         <% end %>
-        <h2 class="mt-4 mb-4"><%= @lecture.title %></h2>
+        <h2 class="mt-4 mb-4 purple-text"><%= @lecture.title %></h2>
         <%= content_tag :div, @lecture.content.body.html_safe, class: "lecture-content" %>
         <% @lecture.photos.each do |photo| %>
          <%= cl_image_tag photo.key, width: 400, class:"centered-image" %>
