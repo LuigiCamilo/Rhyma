@@ -13,9 +13,11 @@
 
 .lecture-content {
   text-align: justify;
-  text-indent: 20px;
 }
 
+.lecture-content p {
+  text-indent: 20px;
+}
 .lecture-content h3{
   margin-top: 30px;
   margin-bottom: 30px;
@@ -42,4 +44,13 @@
   border-radius: 5px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.no-results-image{
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 500px;
 }

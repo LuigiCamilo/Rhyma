@@ -6,9 +6,8 @@
        <div class="col-lg-9">
        <h2 class="border-bottom pb-1 border-top"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></h2>
        <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  if @lecture.video.attached? %>
-        <div>
 
-        </div><%  @lecture.content.embeds.each do |adj| %>
+        <%  @lecture.content.embeds.each do |adj| %>
           <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
           <%= cl_image_tag image.key unless image.nil? %>
         <% end %>
@@ -17,6 +16,10 @@
         <% @lecture.photos.each do |photo| %>
          <%= cl_image_tag photo.key, width: 400, class:"centered-image" %>
          <% end %>
+         <% @lecture.content.embeds.each do |adj| %>
+          <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
+          <%= cl_image_tag image.key, width: 400 unless image.nil? %>
+        <% end %>
       </div>
       <!-- Videos relacionados -->
       <div class="col-lg-3">
@@ -27,7 +30,7 @@
             <div class="video-thumbnail mb-3">
               <%suggestion1 = Course.all.sample%>
                <%= link_to course_path(suggestion1) do %>
-              <%= cl_image_tag suggestion1.photo.key, class: "img-fluid w-40 h-100 rounded-3" %>
+              <%= cl_image_tag suggestion1.photo.key, class: "img-fluid w-40 h-100 rounded-3" if suggestion1.photo.attached?%>
               <p><%=suggestion1.title[0..30] + "..."%></p>
             <% end %>
             </div>
@@ -36,7 +39,7 @@
             <div class="video-thumbnail mb-3">
             <%suggestion2 = Course.all.sample%>
              <%= link_to course_path(suggestion2) do %>
-              <%= cl_image_tag suggestion2.photo.key, class: "img-fluid w-100 h-100" %>
+              <%= cl_image_tag suggestion2.photo.key, class: "img-fluid w-100 h-100" if suggestion2.photo.attached? %>
               <p><%=suggestion2.title[0..30] + "..."%></p>
             <% end %>
 
@@ -46,7 +49,7 @@
             <div class="video-thumbnail mb-3">
               <%suggestion3 = Course.all.sample%>
               <%= link_to course_path(suggestion3) do %>
-              <%= cl_image_tag suggestion3.photo.key, class: "img-fluid w-100 h-100" %>
+              <%= cl_image_tag suggestion3.photo.key, class: "img-fluid w-100 h-100" if suggestion3.photo.attached? %>
               <p><%=suggestion3.title[0..30] + "..."%></p>
             <% end %>
             </div>
@@ -55,7 +58,7 @@
             <div class="video-thumbnail mb-3">
               <%suggestion4 = Course.all.sample%>
               <%= link_to course_path(suggestion4) do %>
-              <%= cl_image_tag suggestion4.photo.key, class: "img-fluid w-100 h-100" %>
+              <%= cl_image_tag suggestion4.photo.key, class: "img-fluid w-100 h-100" if suggestion4.photo.attached? %>
               <p><%=suggestion4.title[0..30] + "..."%></p>
             <% end %>
             </div>
