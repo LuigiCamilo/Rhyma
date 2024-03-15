@@ -44,9 +44,9 @@
             <div class="col-md-7 ps-md-4">
                 <div class="row">
                     <div class="col-12 bg-white px-3 mb-3 pb-3" style="overflow: scroll; max-height: 492px;">
-                    <h4 class="pt-2 ms-1">Mis Cursos</h4>
+                    <h4 class="pt-2 ms-1" >Mis Cursos</h4>
                     <%@user.courses.each do |course|%>
-                        <%= link_to course_path(course), style: "text-decoration: none; color: white;" do %>
+                        <%# <%= link_to "Ir al curso" course_path(course), style: "text-decoration: none; color: white;"%>
                         <div class="d-flex align-items-center justify-content-between border-bottom mb-2">
 
                         <div class="card-product" style="background: #BF3939; opacity: 0.8;">
@@ -60,11 +60,20 @@
                           <%else%>
                           <p>Rating <%=average_rating%>%</p>
                           <%end%>
+                          <div class="mb-3">
+                          <p>
+                            <%= link_to "Modificar", edit_course_path(course), class: "button salmon", style: "color: #ffffff;" %>
+                            <%= link_to "Ir al curso", course_path(course), class: "button salmon", style: "color: #ffffff;" %>
+                          </p>
+
+                          </div>
+
                         </div>
+
                       </div>
                     </div>
 
-                    <%end%>
+
                     <% end %>
 
 

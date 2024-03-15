@@ -6,7 +6,6 @@
        <div class="col-lg-9">
        <h2 class="border-bottom pb-1 border-top purple-text"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></h2>
        <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  if @lecture.video.attached? %>
-
         <%  @lecture.content.embeds.each do |adj| %>
           <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
           <%= cl_image_tag image.key unless image.nil? %>
@@ -18,7 +17,7 @@
          <% end %>
          <% @lecture.content.embeds.each do |adj| %>
           <% image = ActiveStorage::Blob.find_by(id: adj.blob_id) %>
-          <%= cl_image_tag image.key, width: 400 unless image.nil? %>
+          <%= cl_image_tag image.key, class: "w-100", unless image.nil? %>
         <% end %>
       </div>
       <!-- Videos relacionados -->
