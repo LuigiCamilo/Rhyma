@@ -22,8 +22,6 @@ class CoursesController < ApplicationController
     @advance = Advance.find_by(user: current_user, course: @course) if user_signed_in?
     @advance = Advance.new if @advance.nil?
     @teacher = User.find(@course.user_id)
-    console
-    # raise
   end
 
   def create
