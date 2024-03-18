@@ -3,7 +3,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-
+import "@rails/actioncable"
 import "trix"
 import "@rails/actiontext"
 

@@ -132,13 +132,13 @@ courses.each do |course|
 end
 
 lectures = [
-  { title: 'El Círculo de Quintas', image: 'circulo_quintas.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171371/development/29u64912r3z7wn4qbmnxxftsf0w6.mp4', video: 'acordes_escalas.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  #{ title: 'El Círculo de Quintas', image: 'circulo_quintas.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171371/development/29u64912r3z7wn4qbmnxxftsf0w6.mp4', video: 'acordes_escalas.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
   { title: 'Cómo leer partituras: El Endecagrama Primigenio', image: 'leer_partituras.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710183419/leer_partituras_ppuvoz.mp4' , video: 'leer_partituras.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
-  { title: '¿Por qué medimos el ritmo así?', image: 'ritmo.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171396/development/3crb9zx1tlsd3spe5aby6n0cj3ru.mp4' , video: 'ritmo.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
-  { title: '¿Qué es un acorde?. Tipos de Acordes', image: 'acordes.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171430/development/z12fdntsj6oajrkro1s6yg83z83w.mp4' , video: 'acordes.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  #{ title: '¿Por qué medimos el ritmo así?', image: 'ritmo.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171396/development/3crb9zx1tlsd3spe5aby6n0cj3ru.mp4' , video: 'ritmo.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  #{ title: '¿Qué es un acorde?. Tipos de Acordes', image: 'acordes.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171430/development/z12fdntsj6oajrkro1s6yg83z83w.mp4' , video: 'acordes.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
   { title: '¿Qué es una escala musical?', image: 'escala.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710184848/escala_iqa8iq.mp4' , video: 'escala.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
   { title: '¿Qué es un intervalo musical?', image: 'intervalo.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710250484/intervalo_qdhrde.mp4' , video: 'intervalo.mp4',  published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
-  { title: '¿Qué son las tonalidades?', image: 'tonalidades.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171414/development/cwgeabf69mzrs2kmy8gw4pdl1m7k.mp4' , video: 'tonalidades.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
+  #{ title: '¿Qué son las tonalidades?', image: 'tonalidades.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710171414/development/cwgeabf69mzrs2kmy8gw4pdl1m7k.mp4' , video: 'tonalidades.mp4', published: true, course_id: Course.where('title = ?', "Teoría Musical. Conceptos Básicos. Tutoriales").first.id },
   { title: 'Piano Básico', image: 'piano_basico.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710190354/piano_basico_chjxog.mp4' , video: 'piano_partituras.mp4', published: true, course_id: Course.where('title = ?', "Aprende a tocar el piano con mi curso de Piano Básico").first.id },
   { title: 'Piano Melodías', image: 'piano_melodias.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185496/piano_melodias_ay9crs.mp4' , video: 'piano_melodias.mp4', published: true, course_id: Course.where('title = ?', "Aprende a tocar el piano con mi curso de Piano Básico").first.id },
   { title: 'Piano Partituras', image: 'piano_partituras.jpg', video_url: 'https://res.cloudinary.com/dgz3yly6v/video/upload/v1710185537/piano_partituras_byyyc3.mp4' , video: 'piano_partituras.mp4', published: true, course_id: Course.where('title = ?', "Aprende a tocar el piano con mi curso de Piano Básico").first.id },
@@ -277,26 +277,6 @@ contents = {
                                 <p>Otra razón por la que la digitación de guitarra puede ser bastante difícil para un principiante tiene que ver con entrenar los músculos de la mano para que se estiren lo suficiente como para alcanzar las posiciones correctas en el diapasón. Mientras que un guitarrista puede simplemente colocar un solo dedo en cualquier parte del diapasón para crear una nota musical, un guitarrista debe entrenar sus manos para alcanzar la posición correcta para acordes o combinaciones de múltiples notas que crean un tono. En este caso, la digitación de guitarra puede resultar especialmente difícil para personas con dedos cortos o manos generalmente más pequeñas.</p>
                                 <p>Para los principiantes que buscan mejorar su digitación de guitarra, una guitarra eléctrica podría ser una mejor opción que una guitarra acústica. Las guitarras eléctricas generalmente usan cuerdas de níquel de calibre más ligero que son más fáciles de presionar y que ceden a la presión de los dedos más fácilmente que las cuerdas de bronce de la guitarra acústica. Una vez que el jugador ha desarrollado suficiente comodidad en la guitarra eléctrica, puede pasar a la guitarra acústica, lo que puede ser algo más difícil con respecto a la digitación de la guitarra.</p>',
 }
-
-# Crear cursos
-courses.each do |course|
-  course_new = Course.create!(
-    title: course[:title],
-    description: descriptions[course[:title]],
-    published: course[:published],
-    user_id: User.pluck(:id).sample,
-    theme_id: course[:theme_id]
-  )
-  # Adjuntar imagen al curso
-  image_path = Rails.root.join('app', 'assets', 'images', 'courses', course[:image])
-  image_blob = ActiveStorage::Blob.create_and_upload!(
-    io: File.open(image_path),
-    filename: course[:image],
-    content_type: 'image/jpeg'
-  )
-  course_new.photo.attach(image_blob)
-  course_new.save
-end
 
 require "open-uri"
 
