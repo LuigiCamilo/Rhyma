@@ -4,6 +4,7 @@ class Course < ApplicationRecord
   has_many :lectures, dependent: :destroy
   has_many :advances, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :chatrooms, dependent: :destroy
   has_one_attached :photo
   has_rich_text :description
 
