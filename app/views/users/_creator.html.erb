@@ -48,22 +48,21 @@
                     <%@user.courses.each do |course|%>
                         <%# <%= link_to "Ir al curso" course_path(course), style: "text-decoration: none; color: white;"%>
                         <div class="d-flex align-items-center justify-content-between border-bottom mb-2">
-
                         <div class="card-product" style="background: #BF3939;">
-                         <%= cl_image_tag course.photo.key, style: "wigth: 500px" if course.photo.attached? %>
-                        <div class="card-product-infos" style="color: #ffffff; opacity: 1">
+                         <%= cl_image_tag course.photo.key if course.photo.attached? %>
+                        <div class="card-product-infos" style="color: #ffffff;">
                           <h2 class="mt-2"> <%=course.title%></h2>
                           <p>Fecha de creacion: <%=course.created_at%></p>
                           <%average_rating = Review.where(user_id: @user.id, course_id: course.id).average(:rating)%>
                           <%if average_rating.nil?  %>
                           <p style="text-align: rigth;"> <strong>Rating 0%</strong> </p>
                           <%else%>
-                          <p><strong>Rating <%=average_rating%>%</strong></p>
+                          <p style="opacity: 1.0;"><strong>Rating <%=average_rating%>%</strong></p>
                           <%end%>
                           <div class="mb-3">
                           <p>
-                            <%= link_to "Modificar", edit_course_path(course), class: "button", style: "background: #ffffff; color: #000000" %>
-                            <%= link_to "Ir al curso", course_path(course), class: "button", style: "background: #ffffff; color: #000000" %>
+                            <%= link_to "Modificar", edit_course_path(course), class: "button", style: "background: #ffffff; color: salmon;" %>
+                            <%= link_to "Ir al curso", course_path(course), class: "button", style: "color: #ffffff;" %>
                           </p>
 
                           </div>
