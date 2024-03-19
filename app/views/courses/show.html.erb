@@ -8,6 +8,10 @@
           <%= link_to "Comenzar", course_lecture_path(@course, @first_lecture), class:"btn btn-details btn-warning shadow-0" %>
         <% end %>
       </div>
+                  <a class="justify-content-end" href="https://www.paypal.com/donate/?business=88F5F5ERABJ24&no_recurring=0&item_name=Colaborate+to+Rhyma+developers&currency_code=USD" target=”_blank”>
+          <%# <span class="fw-bolder fs-4 ">Rhyma</span> %>
+        <img src="<%= asset_path "paypal-donate.png" %>" alt="" style="width: 120px;">
+    </a>
       <h2 class="card-trip-pricing"><%= @teacher.nickname %></h2>
       <% if @teacher.photo.attached? %>
         <%= cl_image_tag @teacher.photo.key, class: "card-trip-user avatar-bordered" %>
