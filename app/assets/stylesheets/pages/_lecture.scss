@@ -1,0 +1,48 @@
+.video-thumbnail {
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.video-thumbnail p {
+  padding: 10px;
+}
+.video-thumbnail a {
+  text-decoration: none;
+  color: #686868;;
+}
+.lecture-content {
+  text-align: justify;
+}
+.lecture-content p {
+  text-indent: 20px;
+}
+.lecture-content h3{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.lecture-content ul{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.lecture-content ol{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.lecture-content ol{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.centered-image {
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.no-results-image{
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 500px;
+}
