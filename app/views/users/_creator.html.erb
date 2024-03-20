@@ -53,7 +53,7 @@
                         <div class="card-product-infos" style="color: #ffffff;">
                           <h2 class="mt-2"> <%=course.title%></h2>
                           <p>Fecha de creacion: <%=course.created_at%></p>
-                          <%average_rating = Review.where(user_id: @user.id, course_id: course.id).average(:rating)%>
+                          <%average_rating = Review.where(course_id: course.id).average(:rating)%>
                           <%if average_rating.nil?  %>
                           <p style="text-align: rigth;"> <strong>Rating 0%</strong> </p>
                           <%else%>

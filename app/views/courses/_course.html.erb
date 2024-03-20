@@ -1,10 +1,19 @@
 <div class="d-flex justify-content-center col-md-4">
   <div class="card rounded border-0" style="width: 18rem;">
     <%= cl_image_tag course.photo.key, class: "card_img" if course.photo.attached? %>
-    <div class="card-body">
-      <div class="d-flex card-title-container justify-content-between align-items-center mb-4">
+    <div class="card-body pt-2">
+           <%average_rating = Review.where(course_id: course.id).average(:rating)%>
+           <div class="d-flex flex-column align-items-end">
+      <%if average_rating.nil?  %>
+        <p class="text-right"><strong>⭐</strong></p>
+      <%else%>
+        <p class="text-right"><strong><%=average_rating%>⭐</strong></p>
+      <%end%>
+      </div>
+      <div class="d-flex card-title-container justify-content-between align-items-center mb-1">
         <h3 class="title card-title"><%= course.title %></h3>
       </div>
+
       <%= link_to "Detalles", course_path(course), class: "btn btn-details2 mr-2 hover-text" %>
     </div>
   </div>
