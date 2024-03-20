@@ -5,7 +5,8 @@
        <div class="col-lg-9">
        <h2 class="border-bottom py-2 border-top purple-text"><%= @lecture.lecture %> - <%= @lecture.course.title %> : <%= @lecture.title %></h2>
        <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  if @lecture.video.attached? %>
-        <h2 class="mt-4 mb-4 purple-tex"><%= @lecture.title %></h2>
+        <h2 class="mt-4 mb-4 purple-tex"><%= link_to @lecture.title, course_path(@lecture.course) %></h2>
+       
         <%= content_tag :div, @lecture.content.body.html_safe, class: "lecture-content" %>
         <% @lecture.photos.each do |photo| %>
          <%= cl_image_tag photo.key, width: 400, class: "centered-image" %>
