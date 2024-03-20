@@ -8,6 +8,7 @@
           <%= link_to "Comenzar", course_lecture_path(@course, @first_lecture), class:"btn btn-details btn-warning shadow-0" %>
         <% end %>
       </div>
+
                   <a class="justify-content-end" href="https://www.paypal.com/donate/?business=88F5F5ERABJ24&no_recurring=0&item_name=Colaborate+to+Rhyma+developers&currency_code=USD" target=”_blank”>
           <%# <span class="fw-bolder fs-4 ">Rhyma</span> %>
         <img src="<%= asset_path "paypal-donate.png" %>" alt="" style="width: 120px;">
@@ -16,13 +17,21 @@
       <% if @teacher.photo.attached? %>
         <%= cl_image_tag @teacher.photo.key, class: "card-trip-user avatar-bordered" %>
       <% end %>
+
     </div>
   </div>
   <h4 class="fw-bold">Descripción</h4>
   <%= content_tag :div, @course.description.body.html_safe, class: "lecture-content" %>
   <div class="row mt-4 border-top-before">
     <div class="col-md-4">
-      <h4 class="fw-bold">Reviews</h4>
+      <h4 class="fw-bold">Reviews
+      <%average_rating = Review.where(course_id: @course.id).average(:rating)%>
+      <%if average_rating.nil?  %>
+        ⭐
+      <%else%>
+        <%=average_rating%>⭐
+      <%end%>
+      </h4>
       <% if @reviews.length == 0 %>
         Ningún review por los momentos.
       <% end %>
@@ -50,16 +59,20 @@
           <% if  user_signed_in? && !@advance.lecture.nil? &&@advance.lecture >= index %>
             <li class="list-group-item bg-white border list-group-item-action d-flex align-items-center justify-content-between" style="border-radius: 0.7rem;">
               <%= link_to lecture.title, course_lecture_path(@course, lecture) %>
-
-              <%= link_to "Editar", edit_course_lecture_path(@course, lecture), class:"text-info" %>
+              <div>
+              <% if current_user.id.to_i == @teacher.id %>
+                <%= link_to "Editar", edit_course_lecture_path(@course, lecture), class:"text-info" %>
+              <% end %>
               <i class="fa-solid fa-circle-check check-color"></i>
-
+              </div>
             </li>
           <% else %>
-            <li class="list-group-item bg-white border list-group-item-action" style="border-radius: 0.7rem;">
+            <li class="list-group-item bg-white border list-group-item-action d-flex align-items-center justify-content-between" style="border-radius: 0.7rem;">
               <%= lecture.title %>
-              <%= link_to "Editar", edit_course_lecture_path(@course, lecture), class:"text-info" %>
+              <% if current_user.id.to_i == @teacher.id %>
+                <%= link_to "Editar", edit_course_lecture_path(@course, lecture), class:"text-info" %>
 
+              <% end %>
             </li>
           <% end %>
         <% end %>
