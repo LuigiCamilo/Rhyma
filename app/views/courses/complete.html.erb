@@ -54,7 +54,7 @@ p{ font-size: 1.2rem;}
         <input type="radio" name="rating" class="rating_input" checked value="1" id="1"><label for="1">☆</label>
       </div>
       <div class="form-group">
-         <%= f.hidden_field :rating, value: 1 %>
+         <%= f.hidden_field :rating, value: 5 %>
       </div>
       <div class="form-group">
         <%= f.input :coment, label: "Comentario", input_html: { class: "input-text js-input", required: true } %>
@@ -68,7 +68,6 @@ p{ font-size: 1.2rem;}
   </div>
 </div>
 </div>
-
 <script>
   let rating = document.querySelector("#review_rating");
   let starts = document.querySelectorAll(".rating_input")
