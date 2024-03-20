@@ -29,7 +29,7 @@
       <%if average_rating.nil?  %>
         ⭐
       <%else%>
-        <%=average_rating.round(2)%>⭐
+        <%=average_rating.round(1)%>⭐
       <%end%>
       </h4>
       <% if @reviews.length == 0 %>
