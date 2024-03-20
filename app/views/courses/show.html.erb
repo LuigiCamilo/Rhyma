@@ -9,7 +9,7 @@
         <% end %>
       </div>
 
-                  <a class="justify-content-end" href="https://www.paypal.com/donate/?business=88F5F5ERABJ24&no_recurring=0&item_name=Colaborate+to+Rhyma+developers&currency_code=USD" target=”_blank”>
+                  <a class="justify-content-end" href="https://www.paypal.com/donate/?business=88F5F5ERABJ24&no_recurring=0&item_name=Colaborate+to+Rhyma+development&currency_code=USD" target=”_blank”>
           <%# <span class="fw-bolder fs-4 ">Rhyma</span> %>
         <img src="<%= asset_path "paypal-donate.png" %>" alt="" style="width: 120px;">
     </a>
@@ -42,7 +42,7 @@
 
         <div class="card-review">
           <h3 class="rydarkblue"><%= review.user.nickname %></h3>
-          <p><%= review.coment %></p>
+          <p> - <i>"<%= review.coment %>"</i></p>
           <div class="d-flex gap-2" style="color: #d9731a;">
           <% review.rating.times do %>
             <i class="fa-solid fa-star"></i>
@@ -69,7 +69,7 @@
           <% else %>
             <li class="list-group-item bg-white border list-group-item-action d-flex align-items-center justify-content-between" style="border-radius: 0.7rem;">
               <%= lecture.title %>
-              <% if current_user.id.to_i == @teacher.id %>
+              <% if user_signed_in? && current_user.id.to_i == @teacher.id %>
                 <%= link_to "Editar", edit_course_lecture_path(@course, lecture), class:"text-info" %>
 
               <% end %>
