@@ -3,7 +3,7 @@
     <div class="row">
       <!-- Video principal -->
        <div class="col-lg-9">
-       <% titulo = "@lecture.lecture - @lecture.course.title :  @lecture.title" %>
+       <% titulo = "#{@lecture.lecture} - #{@lecture.course.title} :  #{@lecture.title}" %>
        <h2 class="border-bottom py-2 border-top purple-text"><%= link_to titulo, course_path(@lecture.course) %></h2>
        <%= cl_video_tag @lecture.video.key, class: "w-100",  controls: true  if @lecture.video.attached? %>
          <h2 class="mt-4 mb-4 purple-tex"><%= @lecture.title %></h2>
