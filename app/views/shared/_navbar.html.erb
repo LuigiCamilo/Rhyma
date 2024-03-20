@@ -37,6 +37,7 @@
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Perfil", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Chat General", "/chatrooms/1", class: "dropdown-item" %>
               <%= link_to "Cerrar Sesión", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>
