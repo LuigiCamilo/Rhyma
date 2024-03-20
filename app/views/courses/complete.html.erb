@@ -51,7 +51,7 @@ p{ font-size: 1.2rem;}
         <input type="radio" name="rating" class="rating_input" value="4" id="4"><label for="4">☆</label>
         <input type="radio" name="rating" class="rating_input" value="3" id="3"><label for="3">☆</label>
         <input type="radio" name="rating" class="rating_input" value="2" id="2"><label for="2">☆</label>
-        <input type="radio" name="rating" class="rating_input" checked value="1" id="1"><label for="1">☆</label>
+        <input type="radio" name="rating" class="rating_input" value="1" id="1"><label for="1">☆</label>
       </div>
       <div class="form-group">
          <%= f.hidden_field :rating, value: 5 %>
@@ -77,6 +77,6 @@ p{ font-size: 1.2rem;}
     // alert("yolo")
   }
   starts.forEach(start => {
-    start.addEventListener("input", valueRating(start))
+    start.addEventListener("input", valueRating)
   });
 </script>
